@@ -14,6 +14,7 @@ public class deposit extends javax.swing.JFrame  {
     public deposit() {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
     
     // 1. Create your image panel
         profile pfp = new profile();
@@ -31,6 +32,7 @@ public class deposit extends javax.swing.JFrame  {
     public deposit(int id) {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
     
     // 1. Create your image panel
         profile pfp = new profile();
@@ -407,27 +409,22 @@ public class deposit extends javax.swing.JFrame  {
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
         loan loan = new loan();
-        loan.setLocationRelativeTo(null);
-        loan.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loanActionPerformed
 
     private void savingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsActionPerformed
         sbalance sbal = new sbalance(accId);
-        this.setVisible(false);
-        sbal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_savingsActionPerformed
 
     private void withdrawTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabActionPerformed
         widthraw with = new widthraw(accId);
-        this.setVisible(false);
-        with.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_withdrawTabActionPerformed
 
     private void depositTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositTabActionPerformed
         deposit userDash = new deposit();
-        this.setVisible(false);
-        userDash.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_depositTabActionPerformed
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
@@ -436,17 +433,24 @@ public class deposit extends javax.swing.JFrame  {
 
     private void transferTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabActionPerformed
        transfer trans = new transfer(accId);
-        trans.setLocationRelativeTo(null);
-        this.setVisible(false);
-        trans.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_transferTabActionPerformed
 
     private void DconfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DconfirmActionPerformed
         cdb cdb = new cdb();
         String Ssavings = deposit.getText();
-        double newSavings = Double.parseDouble(Ssavings.trim());
-        cdb.setSavingsDeposit(accId, newSavings);
-        deposit.setText("0.00");
+        
+        if(Ssavings.isEmpty()){
+           ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+       }else{
+           try{
+               double newSavings = Double.parseDouble(Ssavings.trim());
+                cdb.setSavingsDeposit(accId, newSavings);
+                deposit.setText("0.00");
+           }catch(NumberFormatException e){           
+               ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+           }
+       }
     }//GEN-LAST:event_DconfirmActionPerformed
 
     /**

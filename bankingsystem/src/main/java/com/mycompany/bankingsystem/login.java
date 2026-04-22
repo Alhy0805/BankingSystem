@@ -8,6 +8,7 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -151,7 +152,8 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        signup signup = new signup();;
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

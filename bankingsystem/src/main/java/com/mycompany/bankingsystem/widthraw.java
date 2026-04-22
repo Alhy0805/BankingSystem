@@ -16,10 +16,12 @@ public class widthraw extends javax.swing.JFrame {
     public widthraw() {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
     public widthraw(int id) {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
         accId = id;
     }
     /**
@@ -362,28 +364,22 @@ public class widthraw extends javax.swing.JFrame {
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
         deposit userDash = new deposit(accId);
-        userDash.setLocationRelativeTo(this);
-        this.setVisible(false);
-        userDash.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
         widthraw with = new widthraw(accId);
-        this.setVisible(false);
-        with.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_withdrawActionPerformed
 
     private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
         transfer trans = new transfer(accId);
-        this.setVisible(false);
-        trans.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_transferActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
-        loan loan = new loan();
-        loan.setLocationRelativeTo(null);
-        loan.setVisible(true);
-        this.setVisible(false);
+        loan loan = new loan(accId);
+        this.dispose();
     }//GEN-LAST:event_loanActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
@@ -413,15 +409,24 @@ public class widthraw extends javax.swing.JFrame {
     private void confirmBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtn2ActionPerformed
         cdb db = new cdb();
         String Wsavings = withdrawIn.getText();
-        double newSavings = Double.parseDouble(Wsavings.trim());
-        db.setSavingsWithdraw(accId, newSavings);
-        withdrawIn.setText("0.00");
+        
+        if(Wsavings.isEmpty()){
+           ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+       }else{
+           try{
+               double newSavings = Double.parseDouble(Wsavings.trim());
+                db.setSavingsWithdraw(accId, newSavings);
+                withdrawIn.setText("0.00");
+           }catch(NumberFormatException e){           
+               ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+           }
+       }
+        
     }//GEN-LAST:event_confirmBtn2ActionPerformed
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
         sbalance sbal = new sbalance(accId);
-        sbal.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
        
     }//GEN-LAST:event_savings3ActionPerformed
 

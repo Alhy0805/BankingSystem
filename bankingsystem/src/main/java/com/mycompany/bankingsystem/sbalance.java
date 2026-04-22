@@ -16,10 +16,12 @@ public class sbalance extends javax.swing.JFrame {
     public sbalance() {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
     public sbalance(int id) {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
         accId = id;
         loadBalance(); // ✅ call it here
     }
@@ -354,28 +356,22 @@ public class sbalance extends javax.swing.JFrame {
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
         deposit userDash = new deposit(accId);
-        this.setVisible(false);
-        userDash.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
         widthraw with = new widthraw(accId);
-        this.setVisible(false);
-        with.setVisible(true);        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_withdrawActionPerformed
 
     private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
-        transfer trans = new transfer();
-        trans.setLocationRelativeTo(null);
-        this.setVisible(false);
-        trans.setVisible(true);
+        transfer trans = new transfer(accId);
+        this.dispose();
     }//GEN-LAST:event_transferActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
-       loan loan = new loan();
-        loan.setLocationRelativeTo(null);
-        loan.setVisible(true);
-        this.dispose();
+       loan loan = new loan(accId);
+       this.dispose();
     }//GEN-LAST:event_loanActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
@@ -403,7 +399,8 @@ public class sbalance extends javax.swing.JFrame {
     }//GEN-LAST:event_sBalanceActionPerformed
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
-        // TODO add your handling code here:
+       sbalance savings = new sbalance(accId);
+       this.dispose();
     }//GEN-LAST:event_savings3ActionPerformed
 
     /**

@@ -9,11 +9,21 @@ package com.mycompany.bankingsystem;
  * @author Syncro
  */
 public class loan extends javax.swing.JFrame {
+    int accId;
     /**
      * Creates new form loan
      */
     public loan() {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+    
+    public loan(int id){
+        initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        accId = id;
     }
 
     /**
@@ -41,7 +51,8 @@ public class loan extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        sBalance = new javax.swing.JTextField();
+        sLoan = new javax.swing.JTextField();
+        loanConfirmBtn = new javax.swing.JButton();
         savings1 = new javax.swing.JButton();
         savings2 = new javax.swing.JButton();
 
@@ -208,11 +219,19 @@ public class loan extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         jLabel3.setText("Enter Amount");
 
-        sBalance.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        sBalance.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        sBalance.addActionListener(new java.awt.event.ActionListener() {
+        sLoan.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        sLoan.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sLoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sBalanceActionPerformed(evt);
+                sLoanActionPerformed(evt);
+            }
+        });
+
+        loanConfirmBtn.setBackground(new java.awt.Color(255, 196, 196));
+        loanConfirmBtn.setText("Confrim Amount");
+        loanConfirmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loanConfirmBtnActionPerformed(evt);
             }
         });
 
@@ -222,11 +241,14 @@ public class loan extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(loanConfirmBtn)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sLoan, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -237,8 +259,10 @@ public class loan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(sBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(119, 119, 119))
+                    .addComponent(sLoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(loanConfirmBtn)
+                .addGap(78, 78, 78))
         );
 
         savings1.setBackground(new java.awt.Color(238, 105, 131));
@@ -332,28 +356,22 @@ public class loan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
-        deposit userDash = new deposit();
-        this.setVisible(false);
-        userDash.setVisible(true);
+        deposit userDash = new deposit(accId);
+        this.dispose();
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
-        widthraw with = new widthraw();
-        this.setVisible(false);
-        with.setVisible(true);        // TODO add your handling code here:
+        widthraw with = new widthraw(accId);    
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_withdrawActionPerformed
 
     private void trasnferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trasnferActionPerformed
-        transfer trans = new transfer();
-        trans.setLocationRelativeTo(null);
-        this.setVisible(false);
-        trans.setVisible(true);
+        transfer trans = new transfer(accId);
+        this.dispose();
     }//GEN-LAST:event_trasnferActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
-        loan loan = new loan();
-        loan.setLocationRelativeTo(null);
-        loan.setVisible(true);
+        loan loan = new loan(accId);
         this.dispose();
     }//GEN-LAST:event_loanActionPerformed
 
@@ -370,14 +388,13 @@ public class loan extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
-        sbalance sbal = new sbalance();
-        this.setVisible(false);
-        sbal.setVisible(true);
+        sbalance sbal = new sbalance(accId);
+        this.dispose();
     }//GEN-LAST:event_savings3ActionPerformed
 
-    private void sBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBalanceActionPerformed
+    private void sLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sLoanActionPerformed
 
-    }//GEN-LAST:event_sBalanceActionPerformed
+    }//GEN-LAST:event_sLoanActionPerformed
 
     private void savings1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings1ActionPerformed
         // TODO add your handling code here:
@@ -386,6 +403,20 @@ public class loan extends javax.swing.JFrame {
     private void savings2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_savings2ActionPerformed
+
+    private void loanConfirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanConfirmBtnActionPerformed
+       String loan = sLoan.getText();
+       
+       if(loan.isEmpty()){
+           ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+       }else{
+           try{
+               double amount = Double.parseDouble(loan);
+           }catch(NumberFormatException e){           
+               ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+           }
+       }
+    }//GEN-LAST:event_loanConfirmBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,10 +462,11 @@ public class loan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton loan;
+    private javax.swing.JButton loanConfirmBtn;
     private javax.swing.JButton logout;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pfpContainer;
-    private javax.swing.JTextField sBalance;
+    private javax.swing.JTextField sLoan;
     private javax.swing.JButton savings1;
     private javax.swing.JButton savings2;
     private javax.swing.JButton savings3;

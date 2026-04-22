@@ -13,9 +13,13 @@ public class transfer extends javax.swing.JFrame {
     private int accId;
     public transfer() {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
     public transfer(int id) {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
         accId = id;
     }
 
@@ -353,27 +357,21 @@ public class transfer extends javax.swing.JFrame {
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
         deposit userDash = new deposit(accId);
-        this.setVisible(false);
-        userDash.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
         widthraw with = new widthraw(accId);
-        this.setVisible(false);
-        with.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_withdrawActionPerformed
 
     private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
         transfer trans = new transfer(accId);
-        trans.setLocationRelativeTo(null);
-        this.setVisible(false);
-        trans.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_transferActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
-        loan loan = new loan();
-        loan.setLocationRelativeTo(null);
-        loan.setVisible(true);
+        loan loan = new loan(accId);
         this.dispose();
     }//GEN-LAST:event_loanActionPerformed
 
@@ -396,21 +394,26 @@ public class transfer extends javax.swing.JFrame {
     private void confirmBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtn2ActionPerformed
         cdb cdb = new cdb();
         String amount = Tamount.getText();
-        double transferAmount = Double.parseDouble(amount.trim());
-        
         String id = Tid.getText();
-        int transferId = Integer.parseInt(id.trim());
         
-        cdb.Transfer(accId,transferId, transferAmount);
-        Tamount.setText("0.00");
-        Tid.setText("");
-        
+        if(id.isEmpty() || amount.isEmpty()){
+           ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+       }else{
+           try{
+               double transferAmount = Double.parseDouble(amount.trim());
+               int transferId = Integer.parseInt(id.trim());
+               cdb.Transfer(accId,transferId, transferAmount);
+               Tamount.setText("0.00");
+               Tid.setText("");
+           }catch(NumberFormatException e){           
+               ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
+           }
+       }
     }//GEN-LAST:event_confirmBtn2ActionPerformed
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
         sbalance sbal = new sbalance(accId);
-        this.setVisible(false);
-        sbal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_savings3ActionPerformed
 
     private void TamountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamountActionPerformed
