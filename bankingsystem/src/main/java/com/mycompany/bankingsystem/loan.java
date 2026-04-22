@@ -6,22 +6,16 @@ package com.mycompany.bankingsystem;
 
 /**
  *
- * @author student
+ * @author Syncro
  */
-public class widthraw extends javax.swing.JFrame {
-    int accId;
+public class loan extends javax.swing.JFrame {
     /**
-     * Creates new form widthraw
+     * Creates new form loan
      */
-    public widthraw() {
+    public loan() {
         initComponents();
-        setLocationRelativeTo(null);
     }
-    public widthraw(int id) {
-        initComponents();
-        setLocationRelativeTo(null);
-        accId = id;
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,13 +25,12 @@ public class widthraw extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        confirmBtn1 = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         buttonsPanel = new javax.swing.JPanel();
         deposit = new javax.swing.JButton();
         withdraw = new javax.swing.JButton();
-        transfer = new javax.swing.JButton();
+        trasnfer = new javax.swing.JButton();
         loan = new javax.swing.JButton();
         transac = new javax.swing.JButton();
         settings = new javax.swing.JButton();
@@ -47,17 +40,10 @@ public class widthraw extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        confirmBtn2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        withdrawIn = new javax.swing.JTextField();
+        sBalance = new javax.swing.JTextField();
         savings1 = new javax.swing.JButton();
         savings2 = new javax.swing.JButton();
-
-        confirmBtn1.setBackground(new java.awt.Color(238, 105, 131));
-        confirmBtn1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        confirmBtn1.setText("Confirm");
-        confirmBtn1.setToolTipText("");
-        confirmBtn1.setPreferredSize(new java.awt.Dimension(75, 35));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +68,7 @@ public class widthraw extends javax.swing.JFrame {
             }
         });
 
-        withdraw.setBackground(new java.awt.Color(238, 105, 131));
+        withdraw.setBackground(new java.awt.Color(255, 196, 196));
         withdraw.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         withdraw.setForeground(new java.awt.Color(133, 14, 53));
         withdraw.setText("Withdraw");
@@ -93,18 +79,18 @@ public class widthraw extends javax.swing.JFrame {
             }
         });
 
-        transfer.setBackground(new java.awt.Color(255, 196, 196));
-        transfer.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        transfer.setForeground(new java.awt.Color(133, 14, 53));
-        transfer.setText("Transfer");
-        transfer.setPreferredSize(new java.awt.Dimension(70, 35));
-        transfer.addActionListener(new java.awt.event.ActionListener() {
+        trasnfer.setBackground(new java.awt.Color(255, 196, 196));
+        trasnfer.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        trasnfer.setForeground(new java.awt.Color(133, 14, 53));
+        trasnfer.setText("Transfer");
+        trasnfer.setPreferredSize(new java.awt.Dimension(70, 35));
+        trasnfer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transferActionPerformed(evt);
+                trasnferActionPerformed(evt);
             }
         });
 
-        loan.setBackground(new java.awt.Color(255, 196, 196));
+        loan.setBackground(new java.awt.Color(238, 105, 131));
         loan.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         loan.setForeground(new java.awt.Color(133, 14, 53));
         loan.setText("Loan");
@@ -156,7 +142,7 @@ public class widthraw extends javax.swing.JFrame {
         );
         pfpContainerLayout.setVerticalGroup(
             pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         savings3.setBackground(new java.awt.Color(255, 196, 196));
@@ -182,7 +168,7 @@ public class widthraw extends javax.swing.JFrame {
                     .addComponent(settings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(trasnfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                     .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -197,7 +183,7 @@ public class widthraw extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(trasnfer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(savings3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -217,28 +203,16 @@ public class widthraw extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 3, 24)); // NOI18N
-        jLabel2.setText("WITHDRAW");
-
-        confirmBtn2.setBackground(new java.awt.Color(238, 105, 131));
-        confirmBtn2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        confirmBtn2.setText("Confirm");
-        confirmBtn2.setToolTipText("");
-        confirmBtn2.setPreferredSize(new java.awt.Dimension(75, 35));
-        confirmBtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmBtn2ActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("LOAN");
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
         jLabel3.setText("Enter Amount");
 
-        withdrawIn.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        withdrawIn.setText("0.00");
-        withdrawIn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        withdrawIn.addActionListener(new java.awt.event.ActionListener() {
+        sBalance.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        sBalance.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sBalance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                withdrawInActionPerformed(evt);
+                sBalanceActionPerformed(evt);
             }
         });
 
@@ -247,13 +221,12 @@ public class widthraw extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(59, 59, 59)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(withdrawIn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -264,10 +237,8 @@ public class widthraw extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(withdrawIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(confirmBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                    .addComponent(sBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(119, 119, 119))
         );
 
         savings1.setBackground(new java.awt.Color(238, 105, 131));
@@ -343,7 +314,7 @@ public class widthraw extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -354,29 +325,30 @@ public class widthraw extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
-        deposit userDash = new deposit(accId);
+        deposit userDash = new deposit();
         this.setVisible(false);
         userDash.setVisible(true);
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
-        widthraw with = new widthraw(accId);
+        widthraw with = new widthraw();
         this.setVisible(false);
-        with.setVisible(true);
+        with.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_withdrawActionPerformed
 
-    private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
+    private void trasnferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trasnferActionPerformed
         transfer trans = new transfer();
-        trans.setVisible(false);
+        trans.setLocationRelativeTo(null);
+        this.setVisible(false);
         trans.setVisible(true);
-    }//GEN-LAST:event_transferActionPerformed
+    }//GEN-LAST:event_trasnferActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
         loan loan = new loan();
@@ -397,6 +369,16 @@ public class widthraw extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_logoutActionPerformed
 
+    private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
+        sbalance sbal = new sbalance();
+        this.setVisible(false);
+        sbal.setVisible(true);
+    }//GEN-LAST:event_savings3ActionPerformed
+
+    private void sBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBalanceActionPerformed
+
+    }//GEN-LAST:event_sBalanceActionPerformed
+
     private void savings1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_savings1ActionPerformed
@@ -404,25 +386,6 @@ public class widthraw extends javax.swing.JFrame {
     private void savings2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_savings2ActionPerformed
-
-    private void withdrawInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawInActionPerformed
-        deposit.setText("");        // TODO add your handling code here:
-    }//GEN-LAST:event_withdrawInActionPerformed
-
-    private void confirmBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtn2ActionPerformed
-        cdb db = new cdb();
-        String Wsavings = withdrawIn.getText();
-        double newSavings = Double.parseDouble(Wsavings.trim());
-        db.setSavingsWithdraw(accId, newSavings);
-        withdrawIn.setText("0.00");
-    }//GEN-LAST:event_confirmBtn2ActionPerformed
-
-    private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
-        sbalance sbal = new sbalance(accId);
-        sbal.setVisible(true);
-        this.setVisible(false);
-       
-    }//GEN-LAST:event_savings3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,29 +404,26 @@ public class widthraw extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(widthraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(widthraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(widthraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(widthraw.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new widthraw().setVisible(true);
+                new loan().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel buttonsPanel;
-    private javax.swing.JButton confirmBtn1;
-    private javax.swing.JButton confirmBtn2;
     private javax.swing.JButton deposit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -474,13 +434,13 @@ public class widthraw extends javax.swing.JFrame {
     private javax.swing.JButton logout;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pfpContainer;
+    private javax.swing.JTextField sBalance;
     private javax.swing.JButton savings1;
     private javax.swing.JButton savings2;
     private javax.swing.JButton savings3;
     private javax.swing.JButton settings;
     private javax.swing.JButton transac;
-    private javax.swing.JButton transfer;
+    private javax.swing.JButton trasnfer;
     private javax.swing.JButton withdraw;
-    private javax.swing.JTextField withdrawIn;
     // End of variables declaration//GEN-END:variables
 }

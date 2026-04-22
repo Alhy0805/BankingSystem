@@ -406,7 +406,10 @@ public class deposit extends javax.swing.JFrame  {
     }//GEN-LAST:event_transacActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
-        // TODO add your handling code here:
+        loan loan = new loan();
+        loan.setLocationRelativeTo(null);
+        loan.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_loanActionPerformed
 
     private void savingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsActionPerformed
@@ -422,7 +425,9 @@ public class deposit extends javax.swing.JFrame  {
     }//GEN-LAST:event_withdrawTabActionPerformed
 
     private void depositTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositTabActionPerformed
-        // TODO add your handling code here:
+        deposit userDash = new deposit();
+        this.setVisible(false);
+        userDash.setVisible(true);
     }//GEN-LAST:event_depositTabActionPerformed
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
@@ -430,7 +435,8 @@ public class deposit extends javax.swing.JFrame  {
     }//GEN-LAST:event_depositActionPerformed
 
     private void transferTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabActionPerformed
-        transfer trans = new transfer();
+       transfer trans = new transfer();
+        trans.setLocationRelativeTo(null);
         this.setVisible(false);
         trans.setVisible(true);
     }//GEN-LAST:event_transferTabActionPerformed

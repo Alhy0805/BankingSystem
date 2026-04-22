@@ -129,7 +129,7 @@
                           <Component id="settings" alignment="1" max="32767" attributes="0"/>
                           <Component id="transac" alignment="1" max="32767" attributes="0"/>
                           <Component id="loan" alignment="1" max="32767" attributes="0"/>
-                          <Component id="savings" alignment="1" max="32767" attributes="0"/>
+                          <Component id="transfer" alignment="1" max="32767" attributes="0"/>
                           <Component id="withdraw" alignment="1" max="32767" attributes="0"/>
                           <Component id="deposit" alignment="0" pref="208" max="32767" attributes="0"/>
                           <Component id="savings3" alignment="1" max="32767" attributes="0"/>
@@ -147,7 +147,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="withdraw" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="savings" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="transfer" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="savings3" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -201,7 +201,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="withdrawActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="savings">
+            <Component class="javax.swing.JButton" name="transfer">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
@@ -218,7 +218,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="savingsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transferActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="loan">

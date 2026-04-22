@@ -32,7 +32,7 @@ public class transfer extends javax.swing.JFrame {
         buttonsPanel = new javax.swing.JPanel();
         deposit = new javax.swing.JButton();
         withdraw = new javax.swing.JButton();
-        savings = new javax.swing.JButton();
+        transfer = new javax.swing.JButton();
         loan = new javax.swing.JButton();
         transac = new javax.swing.JButton();
         settings = new javax.swing.JButton();
@@ -88,14 +88,14 @@ public class transfer extends javax.swing.JFrame {
             }
         });
 
-        savings.setBackground(new java.awt.Color(238, 105, 131));
-        savings.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        savings.setForeground(new java.awt.Color(133, 14, 53));
-        savings.setText("Transfer");
-        savings.setPreferredSize(new java.awt.Dimension(70, 35));
-        savings.addActionListener(new java.awt.event.ActionListener() {
+        transfer.setBackground(new java.awt.Color(238, 105, 131));
+        transfer.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        transfer.setForeground(new java.awt.Color(133, 14, 53));
+        transfer.setText("Transfer");
+        transfer.setPreferredSize(new java.awt.Dimension(70, 35));
+        transfer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savingsActionPerformed(evt);
+                transferActionPerformed(evt);
             }
         });
 
@@ -177,7 +177,7 @@ public class transfer extends javax.swing.JFrame {
                     .addComponent(settings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(savings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                     .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -192,7 +192,7 @@ public class transfer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(savings, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(savings3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -351,19 +351,29 @@ public class transfer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
-        // TODO add your handling code here:
+        deposit userDash = new deposit();
+        this.setVisible(false);
+        userDash.setVisible(true);
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
-        // TODO add your handling code here:
+        widthraw with = new widthraw();
+        this.setVisible(false);
+        with.setVisible(true);
     }//GEN-LAST:event_withdrawActionPerformed
 
-    private void savingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_savingsActionPerformed
+    private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
+        transfer trans = new transfer();
+        trans.setLocationRelativeTo(null);
+        this.setVisible(false);
+        trans.setVisible(true);
+    }//GEN-LAST:event_transferActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
-        // TODO add your handling code here:
+        loan loan = new loan();
+        loan.setLocationRelativeTo(null);
+        loan.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_loanActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
@@ -387,7 +397,9 @@ public class transfer extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmBtn2ActionPerformed
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
-        // TODO add your handling code here:
+        sbalance sbal = new sbalance();
+        this.setVisible(false);
+        sbal.setVisible(true);
     }//GEN-LAST:event_savings3ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -447,10 +459,10 @@ public class transfer extends javax.swing.JFrame {
     private javax.swing.JButton logout;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pfpContainer;
-    private javax.swing.JButton savings;
     private javax.swing.JButton savings3;
     private javax.swing.JButton settings;
     private javax.swing.JButton transac;
+    private javax.swing.JButton transfer;
     private javax.swing.JButton withdraw;
     // End of variables declaration//GEN-END:variables
 }
