@@ -68,6 +68,7 @@ public class deposit extends javax.swing.JFrame  {
         logout = new javax.swing.JButton();
         pfpContainer = new javax.swing.JPanel();
         transferTab = new javax.swing.JButton();
+        dashboard = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         savingsBtn = new javax.swing.JButton();
@@ -83,6 +84,7 @@ public class deposit extends javax.swing.JFrame  {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard");
+        setUndecorated(true);
         setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(133, 14, 53));
@@ -165,7 +167,7 @@ public class deposit extends javax.swing.JFrame  {
         logout.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         logout.setForeground(new java.awt.Color(133, 14, 53));
         logout.setText("Logout");
-        logout.setPreferredSize(new java.awt.Dimension(70, 35));
+        logout.setPreferredSize(new java.awt.Dimension(100, 35));
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
@@ -180,7 +182,7 @@ public class deposit extends javax.swing.JFrame  {
         );
         pfpContainerLayout.setVerticalGroup(
             pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 122, Short.MAX_VALUE)
+            .addGap(0, 125, Short.MAX_VALUE)
         );
 
         transferTab.setBackground(new java.awt.Color(255, 196, 196));
@@ -194,6 +196,16 @@ public class deposit extends javax.swing.JFrame  {
             }
         });
 
+        dashboard.setBackground(new java.awt.Color(255, 196, 196));
+        dashboard.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        dashboard.setForeground(new java.awt.Color(133, 14, 53));
+        dashboard.setText("Dashboard");
+        dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dashboardActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
@@ -202,21 +214,26 @@ public class deposit extends javax.swing.JFrame  {
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(settings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(savings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(withdrawTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(depositTab, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                    .addComponent(transferTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(transferTab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                        .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dashboard, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(102, 102, 102)
+                .addGap(30, 30, 30)
+                .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(depositTab, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(withdrawTab, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,10 +245,10 @@ public class deposit extends javax.swing.JFrame  {
                 .addComponent(loan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(transac, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -378,18 +395,18 @@ public class deposit extends javax.swing.JFrame  {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1032, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1033, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -409,22 +426,22 @@ public class deposit extends javax.swing.JFrame  {
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
         loan loan = new loan();
-        this.dispose();
+        transition.switchFrame(this,loan);
     }//GEN-LAST:event_loanActionPerformed
 
     private void savingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsActionPerformed
         sbalance sbal = new sbalance(accId);
-        this.dispose();
+        transition.switchFrame(this,sbal);
     }//GEN-LAST:event_savingsActionPerformed
 
     private void withdrawTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawTabActionPerformed
         widthraw with = new widthraw(accId);
-        this.dispose();
+        transition.switchFrame(this,with);
     }//GEN-LAST:event_withdrawTabActionPerformed
 
     private void depositTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositTabActionPerformed
         deposit userDash = new deposit();
-        this.dispose();
+        transition.switchFrame(this,userDash);
     }//GEN-LAST:event_depositTabActionPerformed
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
@@ -433,7 +450,7 @@ public class deposit extends javax.swing.JFrame  {
 
     private void transferTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferTabActionPerformed
        transfer trans = new transfer(accId);
-       this.dispose();
+        transition.switchFrame(this,trans);
     }//GEN-LAST:event_transferTabActionPerformed
 
     private void DconfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DconfirmActionPerformed
@@ -453,6 +470,11 @@ public class deposit extends javax.swing.JFrame  {
        }
     }//GEN-LAST:event_DconfirmActionPerformed
 
+    private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
+        udashboard dashboard = new udashboard(accId);
+        transition.switchFrame(this,dashboard);
+    }//GEN-LAST:event_dashboardActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -469,6 +491,7 @@ public class deposit extends javax.swing.JFrame  {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Dconfirm;
     private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JButton dashboard;
     private javax.swing.JTextField deposit;
     private javax.swing.JButton depositTab;
     private javax.swing.JButton interbankBtn;

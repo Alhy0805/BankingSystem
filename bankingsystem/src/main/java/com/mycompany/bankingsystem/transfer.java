@@ -18,9 +18,9 @@ public class transfer extends javax.swing.JFrame {
     }
     public transfer(int id) {
         initComponents();
-        setLocationRelativeTo(null);
         setVisible(true);
-        accId = id;
+        accId = id;        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -45,6 +45,7 @@ public class transfer extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         pfpContainer = new javax.swing.JPanel();
         savings3 = new javax.swing.JButton();
+        dashboard = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,6 +62,8 @@ public class transfer extends javax.swing.JFrame {
         confirmBtn1.setPreferredSize(new java.awt.Dimension(75, 35));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(133, 14, 53));
         mainPanel.setPreferredSize(new java.awt.Dimension(1200, 650));
@@ -131,7 +134,7 @@ public class transfer extends javax.swing.JFrame {
         settings.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         settings.setForeground(new java.awt.Color(133, 14, 53));
         settings.setText("Settings");
-        settings.setPreferredSize(new java.awt.Dimension(70, 35));
+        settings.setPreferredSize(new java.awt.Dimension(100, 35));
         settings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 settingsActionPerformed(evt);
@@ -142,7 +145,7 @@ public class transfer extends javax.swing.JFrame {
         logout.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         logout.setForeground(new java.awt.Color(133, 14, 53));
         logout.setText("Logout");
-        logout.setPreferredSize(new java.awt.Dimension(70, 35));
+        logout.setPreferredSize(new java.awt.Dimension(100, 35));
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
@@ -157,7 +160,7 @@ public class transfer extends javax.swing.JFrame {
         );
         pfpContainerLayout.setVerticalGroup(
             pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 46, Short.MAX_VALUE)
+            .addGap(0, 125, Short.MAX_VALUE)
         );
 
         savings3.setBackground(new java.awt.Color(255, 196, 196));
@@ -171,6 +174,16 @@ public class transfer extends javax.swing.JFrame {
             }
         });
 
+        dashboard.setBackground(new java.awt.Color(255, 196, 196));
+        dashboard.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        dashboard.setForeground(new java.awt.Color(133, 14, 53));
+        dashboard.setText("Dashboard");
+        dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dashboardActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
@@ -179,36 +192,41 @@ public class transfer extends javax.swing.JFrame {
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(settings, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(transfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                    .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                        .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dashboard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(168, 168, 168)
+                .addGap(30, 30, 30)
+                .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(withdraw, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(transfer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(savings3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(loan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(transac, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -304,7 +322,7 @@ public class transfer extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +356,7 @@ public class transfer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -349,7 +367,7 @@ public class transfer extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         pack();
@@ -357,12 +375,12 @@ public class transfer extends javax.swing.JFrame {
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
         deposit userDash = new deposit(accId);
-        this.dispose();
+        transition.switchFrame(this,userDash);
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
         widthraw with = new widthraw(accId);
-        this.dispose();
+        transition.switchFrame(this,with);
     }//GEN-LAST:event_withdrawActionPerformed
 
     private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
@@ -372,7 +390,7 @@ public class transfer extends javax.swing.JFrame {
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
         loan loan = new loan(accId);
-        this.dispose();
+        transition.switchFrame(this,loan);
     }//GEN-LAST:event_loanActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
@@ -413,12 +431,17 @@ public class transfer extends javax.swing.JFrame {
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
         sbalance sbal = new sbalance(accId);
-        this.dispose();
+        transition.switchFrame(this,sbal);
     }//GEN-LAST:event_savings3ActionPerformed
 
     private void TamountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TamountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TamountActionPerformed
+
+    private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
+        udashboard dashboard = new udashboard(accId);
+        transition.switchFrame(this,dashboard);
+    }//GEN-LAST:event_dashboardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -462,6 +485,7 @@ public class transfer extends javax.swing.JFrame {
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton confirmBtn1;
     private javax.swing.JButton confirmBtn2;
+    private javax.swing.JButton dashboard;
     private javax.swing.JButton deposit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
