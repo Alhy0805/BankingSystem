@@ -12,7 +12,8 @@ public class ErrorManager {
     private static final String[] Error ={
       "                                         INVALID INPUT!",
       "                                         INSUFFICIENT BALANCE!",
-      "                                         CONNECTION TIMEOUT"
+      "                                         CONNECTION TIMEOUT",
+      "                              INCORRECT CREDENTIALS"
     };
     
     public static void showError(java.awt.Frame parent, int errorIndex){

@@ -40,6 +40,7 @@ public class login extends javax.swing.JFrame {
 
         idIn.setBackground(new java.awt.Color(252, 245, 238));
         idIn.setForeground(new java.awt.Color(133, 14, 53));
+        idIn.addActionListener(this::idInActionPerformed);
 
         pin.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         pin.setForeground(new java.awt.Color(133, 14, 53));
@@ -118,36 +119,64 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int inputId = Integer.parseInt(idIn.getText());
-        int inputPin = Integer.parseInt(new String(pinIn.getPassword()));
         
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-        boolean f = false;
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
-            String sql = "select accId,position,pin from bankingAccounts";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
-                int dbid = rs.getInt("accId");
-                String dbposition = rs.getString("position");
-                int dbpin = rs.getInt("pin");
-                if(inputId == dbid && inputPin == dbpin && dbposition.equals("Admin")){
-                    adminDashboard admin = new adminDashboard(dbid); // pass the ID here
-                    admin.setVisible(true);
-                    this.setVisible(false); // also hide the login window
-                }
-                if(inputId == dbid && inputPin == dbpin && dbposition.equals("User")){
-                    udashboard userDash = new udashboard(dbid);
-                    this.setVisible(false);
-                    userDash.setVisible(true);
-                }
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
+        String idTxt = idIn.getText().trim();
+        String pinTxt = new String(pinIn.getPassword()).trim();
+
+        // 1. Initial Validation
+        if (idTxt.isEmpty() || pinTxt.isEmpty()) {
+            ErrorManager.showError((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), 3);
+            return;
         }
-        
+
+        try {
+            
+            int inputId = Integer.parseInt(idTxt);
+            int inputPin = Integer.parseInt(pinTxt);
+
+            // 2. Database Connection
+            try (Connection conn = dbconn.connect()) {
+                String sql = "SELECT accId, position, pin FROM bankingAccounts";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                ResultSet rs = pstmt.executeQuery();
+                boolean found = false;
+                
+                while (rs.next()) {
+                    int dbid = rs.getInt("accId");
+                    int dbpin = rs.getInt("pin");
+                    String dbposition = rs.getString("position");
+                   
+
+                    // 3. Credential Match Check
+                    if (inputId == dbid && inputPin == dbpin) {
+                        this.setVisible(false); // Hide login once found
+                         found = true;
+
+                        if ("admin".equals(dbposition)) {
+                            new adminDashboard(dbid).setVisible(true);
+                            return; // Exit loop and method
+                        }
+
+                        if ("user".equals(dbposition)) {
+                            new udashboard(dbid).setVisible(true);
+                            return; // Exit loop and method
+                        }
+                    }
+                }
+
+               if (!found) {
+                    // Replace '3' with whatever error code you use for "Invalid Credentials"
+                    ErrorManager.showError((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), 3);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (NumberFormatException e) {
+            ErrorManager.showError((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), 3);
+        }
+
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -155,6 +184,10 @@ public class login extends javax.swing.JFrame {
         signup signup = new signup();;
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void idInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idInActionPerformed
 
     /**
      * @param args the command line arguments
