@@ -139,7 +139,7 @@ public class login extends javax.swing.JFrame {
                     this.setVisible(false); // also hide the login window
                 }
                 if(inputId == dbid && inputPin == dbpin && dbposition.equals("User")){
-                    deposit userDash = new deposit(dbid);
+                    udashboard userDash = new udashboard(dbid);
                     this.setVisible(false);
                     userDash.setVisible(true);
                 }

@@ -11,12 +11,8 @@ public class cdb {
     int userId;
     public double getSavings(int accID) {
         double realSavings = 0.0;
-        
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-        
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
+     
+        try(Connection conn = dbconn.connect()){
             String sql = "select* from bankingAccounts";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
@@ -39,11 +35,7 @@ public class cdb {
     public void setSavingsDeposit(int accID,double newSavings) {
         double oldSavings = 0.0;
         
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-        
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
+        try(Connection conn = dbconn.connect()){
             String old = "select* from bankingAccounts";
             PreparedStatement stmt = conn.prepareStatement(old);
             ResultSet rs = stmt.executeQuery();
@@ -77,11 +69,8 @@ public class cdb {
     public void setSavingsWithdraw(int accID,double newSavings) {
         double oldSavings = 0.0;
         
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-        
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
+
+        try(Connection conn = dbconn.connect()){
             String old = "select* from bankingAccounts";
             PreparedStatement stmt = conn.prepareStatement(old);
             ResultSet rs = stmt.executeQuery();
@@ -98,13 +87,26 @@ public class cdb {
             
             String sql = "update bankingAccounts set sBalance = ? where accId=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setDouble(1,oldSavings - newSavings);
-            pstmt.setInt(2,accID);
-            
-            int rowsAffected = pstmt.executeUpdate();
-            if(rowsAffected>0){
-                JOptionPane.showMessageDialog(null,"WITHDRAW SUCCESSFUL");
+            if(oldSavings >= newSavings){
+                if(newSavings <= 0){
+                JOptionPane.showMessageDialog(null,"INVALID AMOUNT");
+                }else{
+                    pstmt.setDouble(1,oldSavings - newSavings);
+                    pstmt.setInt(2,accID); 
+                
+                    int rowsAffected = pstmt.executeUpdate();
+                    if(rowsAffected>0){
+                        JOptionPane.showMessageDialog(null,"WITHDRAW SUCCESSFUL");
+                    }
+                }
+                
+            }else{
+                JOptionPane.showMessageDialog(null,"INVALID AMOUNT");
             }
+            
+            
+            
+            
             
         }catch(SQLException e){
             e.printStackTrace();
@@ -115,12 +117,8 @@ public class cdb {
     public void Transfer(int userId,int accID,double amount) {
         double oldSavings1 = 0.0;
         double oldSavings2 = 0.0;
-        
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-        
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
+          
+        try(Connection conn = dbconn.connect()){
             String old1 = "select* from bankingAccounts";
             PreparedStatement stmt1 = conn.prepareStatement(old1);
             ResultSet rs1 = stmt1.executeQuery();

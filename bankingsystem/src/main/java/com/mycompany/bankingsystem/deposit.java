@@ -72,8 +72,6 @@ public class deposit extends javax.swing.JFrame  {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         savingsBtn = new javax.swing.JButton();
-        locbankBtn = new javax.swing.JButton();
-        interbankBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         Dconfirm = new javax.swing.JButton();
         deposit = new javax.swing.JTextField();
@@ -260,37 +258,20 @@ public class deposit extends javax.swing.JFrame  {
         savingsBtn.setText("Savings");
         savingsBtn.setPreferredSize(new java.awt.Dimension(75, 35));
 
-        locbankBtn.setBackground(new java.awt.Color(255, 196, 196));
-        locbankBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        locbankBtn.setText("Local Bank");
-        locbankBtn.setPreferredSize(new java.awt.Dimension(75, 35));
-
-        interbankBtn.setBackground(new java.awt.Color(255, 196, 196));
-        interbankBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        interbankBtn.setText("International Bank");
-        interbankBtn.setPreferredSize(new java.awt.Dimension(75, 35));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(savingsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                    .addComponent(locbankBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(interbankBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(savingsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(97, 97, 97)
                 .addComponent(savingsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(locbankBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(interbankBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -328,8 +309,8 @@ public class deposit extends javax.swing.JFrame  {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel3)
+                .addGap(62, 62, 62)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Dconfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -360,7 +341,7 @@ public class deposit extends javax.swing.JFrame  {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,7 +475,6 @@ public class deposit extends javax.swing.JFrame  {
     private javax.swing.JButton dashboard;
     private javax.swing.JTextField deposit;
     private javax.swing.JButton depositTab;
-    private javax.swing.JButton interbankBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -503,7 +483,6 @@ public class deposit extends javax.swing.JFrame  {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton loan;
-    private javax.swing.JButton locbankBtn;
     private javax.swing.JButton logout;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pfpContainer;

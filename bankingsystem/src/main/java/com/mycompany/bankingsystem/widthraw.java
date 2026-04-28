@@ -52,9 +52,11 @@ public class widthraw extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         confirmBtn2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        withdrawIn = new javax.swing.JTextField();
+        ecashNum = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        amount = new javax.swing.JTextField();
         savings1 = new javax.swing.JButton();
-        savings2 = new javax.swing.JButton();
+        cash = new javax.swing.JButton();
 
         confirmBtn1.setBackground(new java.awt.Color(238, 105, 131));
         confirmBtn1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
@@ -252,14 +254,25 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
-        jLabel3.setText("Enter Amount");
+        jLabel3.setText("Enter Number");
 
-        withdrawIn.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
-        withdrawIn.setText("0.00");
-        withdrawIn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        withdrawIn.addActionListener(new java.awt.event.ActionListener() {
+        ecashNum.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        ecashNum.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ecashNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                withdrawInActionPerformed(evt);
+                ecashNumActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        jLabel4.setText("Enter Amount");
+
+        amount.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        amount.setText("0.00");
+        amount.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        amount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amountActionPerformed(evt);
             }
         });
 
@@ -268,25 +281,38 @@ public class widthraw extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(withdrawIn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(156, 156, 156)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(confirmBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(52, 52, 52)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ecashNum, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(withdrawIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(ecashNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confirmBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -302,14 +328,14 @@ public class widthraw extends javax.swing.JFrame {
             }
         });
 
-        savings2.setBackground(new java.awt.Color(255, 196, 196));
-        savings2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        savings2.setForeground(new java.awt.Color(133, 14, 53));
-        savings2.setText("CASH");
-        savings2.setPreferredSize(new java.awt.Dimension(70, 35));
-        savings2.addActionListener(new java.awt.event.ActionListener() {
+        cash.setBackground(new java.awt.Color(255, 196, 196));
+        cash.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        cash.setForeground(new java.awt.Color(133, 14, 53));
+        cash.setText("CASH");
+        cash.setPreferredSize(new java.awt.Dimension(70, 35));
+        cash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savings2ActionPerformed(evt);
+                cashActionPerformed(evt);
             }
         });
 
@@ -321,7 +347,7 @@ public class widthraw extends javax.swing.JFrame {
                 .addGap(102, 102, 102)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(savings1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(savings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(45, 45, 45)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(156, 156, 156))
@@ -332,7 +358,7 @@ public class widthraw extends javax.swing.JFrame {
                 .addGap(189, 189, 189)
                 .addComponent(savings1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(savings2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cash, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(83, Short.MAX_VALUE)
@@ -418,17 +444,19 @@ public class widthraw extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_savings1ActionPerformed
 
-    private void savings2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_savings2ActionPerformed
+    private void cashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashActionPerformed
+        widthrawWithCash cash = new widthrawWithCash(accId);
+        this.setVisible(false);
+        cash.setVisible(true);
+    }//GEN-LAST:event_cashActionPerformed
 
-    private void withdrawInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawInActionPerformed
+    private void ecashNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ecashNumActionPerformed
         deposit.setText("");        // TODO add your handling code here:
-    }//GEN-LAST:event_withdrawInActionPerformed
+    }//GEN-LAST:event_ecashNumActionPerformed
 
     private void confirmBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtn2ActionPerformed
         cdb db = new cdb();
-        String Wsavings = withdrawIn.getText();
+        String Wsavings = amount.getText();
         
         if(Wsavings.isEmpty()){
            ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
@@ -436,7 +464,8 @@ public class widthraw extends javax.swing.JFrame {
            try{
                double newSavings = Double.parseDouble(Wsavings.trim());
                 db.setSavingsWithdraw(accId, newSavings);
-                withdrawIn.setText("0.00");
+                ecashNum.setText("");
+                amount.setText("0.00");
            }catch(NumberFormatException e){           
                ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
            }
@@ -454,6 +483,10 @@ public class widthraw extends javax.swing.JFrame {
         udashboard dashboard = new udashboard(accId);
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
+
+    private void amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_amountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -492,14 +525,18 @@ public class widthraw extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField amount;
     private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JButton cash;
     private javax.swing.JButton confirmBtn1;
     private javax.swing.JButton confirmBtn2;
     private javax.swing.JButton dashboard;
     private javax.swing.JButton deposit;
+    private javax.swing.JTextField ecashNum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton loan;
@@ -507,12 +544,10 @@ public class widthraw extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pfpContainer;
     private javax.swing.JButton savings1;
-    private javax.swing.JButton savings2;
     private javax.swing.JButton savings3;
     private javax.swing.JButton settings;
     private javax.swing.JButton transac;
     private javax.swing.JButton transfer;
     private javax.swing.JButton withdraw;
-    private javax.swing.JTextField withdrawIn;
     // End of variables declaration//GEN-END:variables
 }

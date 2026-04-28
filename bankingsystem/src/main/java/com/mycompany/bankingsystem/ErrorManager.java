@@ -10,9 +10,9 @@ package com.mycompany.bankingsystem;
  */
 public class ErrorManager {
     private static final String[] Error ={
-      "INVALID INPUT!",
-      "INSUFFICIENT BALANCE!",
-      "CONNECTION TIMEOUT"
+      "                                         INVALID INPUT!",
+      "                                         INSUFFICIENT BALANCE!",
+      "                                         CONNECTION TIMEOUT"
     };
     
     public static void showError(java.awt.Frame parent, int errorIndex){
