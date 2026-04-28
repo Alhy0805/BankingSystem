@@ -135,6 +135,9 @@
               <Color blue="35" green="e" red="85" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idInActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="pin">
           <Properties>
