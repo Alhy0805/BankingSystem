@@ -53,23 +53,32 @@ public class AiUi extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 102, 0));
 
-        jPanel1.setBackground(new java.awt.Color(51, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(133, 14, 53));
 
         AiTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        AiTitle.setForeground(new java.awt.Color(252, 245, 238));
         AiTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AiTitle.setText("AI ASSISSTANT");
 
         ChatBoxTextArea.setColumns(20);
+        ChatBoxTextArea.setForeground(new java.awt.Color(133, 14, 53));
         ChatBoxTextArea.setRows(5);
         ChatBoxTextArea.setText("AI: Hi! how can I help you today?");
         ChatBoxTextArea.setMargin(new java.awt.Insets(6, 10, 6, 10));
         jScrollPane1.setViewportView(ChatBoxTextArea);
 
+        jLabel1.setForeground(new java.awt.Color(252, 245, 238));
         jLabel1.setText("Write your response here");
 
+        UserInputTextField.setForeground(new java.awt.Color(133, 14, 53));
+
+        InputBtn.setBackground(new java.awt.Color(255, 196, 196));
+        InputBtn.setForeground(new java.awt.Color(133, 14, 53));
         InputBtn.setText("Enter");
         InputBtn.addActionListener(this::InputBtnActionPerformed);
 
+        BackBtn.setBackground(new java.awt.Color(255, 196, 196));
+        BackBtn.setForeground(new java.awt.Color(133, 14, 53));
         BackBtn.setText("Back");
         BackBtn.addActionListener(this::BackBtnActionPerformed);
 

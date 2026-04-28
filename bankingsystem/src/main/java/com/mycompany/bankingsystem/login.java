@@ -159,13 +159,13 @@ public class login extends javax.swing.JFrame {
 
                         if ("user".equals(dbposition)) {
                             new udashboard(dbid).setVisible(true);
-                            return; // Exit loop and method
+                            return;
                         }
                     }
                 }
 
                if (!found) {
-                    // Replace '3' with whatever error code you use for "Invalid Credentials"
+                    
                     ErrorManager.showError((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), 3);
                 }
 

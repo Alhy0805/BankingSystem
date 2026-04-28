@@ -164,9 +164,66 @@ public class cdb {
         
   
     }
-    
-    
-    
+    public double getTotalDep(int accId) {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT totalDep FROM bankingAccounts WHERE accId = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, accId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("totalDep");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+    public double getTotalWith(int accId) {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT totalWith FROM bankingAccounts WHERE accId = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, accId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("totalWith");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+    public double getTotalTrans(int accId) {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT totalTrans FROM bankingAccounts WHERE accId = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, accId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("totalTrans");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
     
     
     
