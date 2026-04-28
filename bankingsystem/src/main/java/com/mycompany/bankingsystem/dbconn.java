@@ -5,8 +5,8 @@ import java.sql.*;
 public class dbconn {
     public static Connection connect() throws SQLException{
         String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
+        String pass = "";
+        String url = "jdbc:mysql://localhost:3306/bankingdb";
         
         return DriverManager.getConnection(url,user,pass);
     }
