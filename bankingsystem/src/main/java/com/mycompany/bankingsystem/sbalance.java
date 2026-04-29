@@ -10,6 +10,8 @@ package com.mycompany.bankingsystem;
  */
 public class sbalance extends javax.swing.JFrame {
     int accId;
+    boolean aiFrame;
+    
     /**
      * Creates new form widthraw
      */
@@ -60,8 +62,6 @@ public class sbalance extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         sBalance = new javax.swing.JTextField();
-        savings1 = new javax.swing.JButton();
-        savings2 = new javax.swing.JButton();
 
         confirmBtn1.setBackground(new java.awt.Color(238, 105, 131));
         confirmBtn1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
@@ -263,8 +263,8 @@ public class sbalance extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,49 +282,17 @@ public class sbalance extends javax.swing.JFrame {
                 .addGap(119, 119, 119))
         );
 
-        savings1.setBackground(new java.awt.Color(238, 105, 131));
-        savings1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        savings1.setForeground(new java.awt.Color(133, 14, 53));
-        savings1.setText("E - CASH");
-        savings1.setPreferredSize(new java.awt.Dimension(70, 35));
-        savings1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savings1ActionPerformed(evt);
-            }
-        });
-
-        savings2.setBackground(new java.awt.Color(255, 196, 196));
-        savings2.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        savings2.setForeground(new java.awt.Color(133, 14, 53));
-        savings2.setText("CASH");
-        savings2.setPreferredSize(new java.awt.Dimension(70, 35));
-        savings2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savings2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(savings1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(savings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(45, 45, 45)
+                .addGap(157, 157, 157)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(156, 156, 156))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addComponent(savings1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(savings2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(83, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,14 +371,6 @@ public class sbalance extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_logoutActionPerformed
 
-    private void savings1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_savings1ActionPerformed
-
-    private void savings2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_savings2ActionPerformed
-
     private void sBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sBalanceActionPerformed
         
     }//GEN-LAST:event_sBalanceActionPerformed
@@ -421,7 +381,7 @@ public class sbalance extends javax.swing.JFrame {
     }//GEN-LAST:event_savings3ActionPerformed
 
     private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
-        udashboard dashboard = new udashboard(accId);
+        udashboard dashboard = new udashboard(accId,aiFrame);
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
 
@@ -478,8 +438,6 @@ public class sbalance extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pfpContainer;
     private javax.swing.JTextField sBalance;
-    private javax.swing.JButton savings1;
-    private javax.swing.JButton savings2;
     private javax.swing.JButton savings3;
     private javax.swing.JButton settings;
     private javax.swing.JButton transac;

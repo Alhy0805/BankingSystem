@@ -224,8 +224,46 @@ public class cdb {
 
         return amount;
     }
-    
-    
+    public double getTotalLoan(int accId) {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT totalLoan FROM bankingAccounts WHERE accId = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, accId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("totalLoan");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+    public double getTotalTransac(int accId) {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT totalTransac FROM bankingAccounts WHERE accId = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, accId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("totalTransac");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
     
     
     

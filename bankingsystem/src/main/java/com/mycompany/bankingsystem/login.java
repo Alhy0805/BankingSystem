@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class login extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(login.class.getName());
-
+    boolean aiFrame;
     public login() {
         initComponents();
         setLocationRelativeTo(null);
@@ -158,7 +158,7 @@ public class login extends javax.swing.JFrame {
                         }
 
                         if ("user".equals(dbposition)) {
-                            new udashboard(dbid).setVisible(true);
+                            new udashboard(dbid,aiFrame).setVisible(true);
                             return;
                         }
                     }

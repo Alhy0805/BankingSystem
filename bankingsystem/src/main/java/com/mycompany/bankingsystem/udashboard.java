@@ -10,6 +10,8 @@ package com.mycompany.bankingsystem;
  */
 public class udashboard extends javax.swing.JFrame {
      int accId;
+     boolean aiFrame = false;
+     boolean mainFrame = true;
     /**
      * Creates new form udashboard
      */
@@ -18,12 +20,21 @@ public class udashboard extends javax.swing.JFrame {
         setVisible(true);
         initComponents();
     }
-    
-    public udashboard(int id){
+   
+    public udashboard(int id, boolean ai){
         initComponents();
         setLocationRelativeTo(null);
-        setVisible(true);
+        
         accId = id;
+        aiFrame = ai;
+      
+        if(!ai){
+            setVisible(false);
+            setVisible(true);
+        }    
+        
+        
+        
         
         cdb db = new cdb();
         double Damount = db.getTotalDep(id);
@@ -37,6 +48,12 @@ public class udashboard extends javax.swing.JFrame {
         
         double Samount = db.getSavings(id);
         savAmount.setText(String.format("%.2f", Samount));
+        
+        double Lamount = db.getTotalLoan(id);
+        loanAmount.setText(String.format("%.2f", Lamount));
+    }
+    public static void mainFrame(int id, boolean ai){
+        
     }
 
     /**
@@ -80,6 +97,7 @@ public class udashboard extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         transacAmount = new javax.swing.JTextField();
+        diana = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -229,7 +247,7 @@ public class udashboard extends javax.swing.JFrame {
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
+                .addGap(40, 40, 40)
                 .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,6 +319,11 @@ public class udashboard extends javax.swing.JFrame {
         savAmount.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 18)); // NOI18N
         savAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         savAmount.setText("0.00");
+        savAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savAmountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -499,6 +522,15 @@ public class udashboard extends javax.swing.JFrame {
                 .addGap(50, 50, 50))
         );
 
+        diana.setBackground(new java.awt.Color(255, 196, 196));
+        diana.setForeground(new java.awt.Color(133, 14, 53));
+        diana.setText("Ask Diana?");
+        diana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dianaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -506,13 +538,15 @@ public class udashboard extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addGap(330, 330, 330)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(diana, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())))
         );
         mainPanelLayout.setVerticalGroup(
@@ -520,7 +554,9 @@ public class udashboard extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addComponent(diana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
@@ -573,12 +609,12 @@ public class udashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
-        sbalance savings = new sbalance(accId);
-        transition.switchFrame(this,savings);
+        sbalance sbal = new sbalance(accId);
+        transition.switchFrame(this,sbal);
     }//GEN-LAST:event_savings3ActionPerformed
 
     private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
-       udashboard dashboard = new udashboard(accId);
+       udashboard dashboard = new udashboard(accId,aiFrame);
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
 
@@ -586,6 +622,17 @@ public class udashboard extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_depAmountActionPerformed
+
+    private void savAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_savAmountActionPerformed
+
+    private void dianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dianaActionPerformed
+        
+         // hide main dashboard
+        new AiUi(accId, true, this);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dianaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -627,6 +674,7 @@ public class udashboard extends javax.swing.JFrame {
     private javax.swing.JButton dashboard;
     private javax.swing.JTextField depAmount;
     private javax.swing.JButton deposit;
+    private javax.swing.JButton diana;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

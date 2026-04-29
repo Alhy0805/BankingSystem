@@ -11,6 +11,7 @@ import java.awt.*;
 
 public class deposit extends javax.swing.JFrame  {
     private int accId;
+    boolean aiFrame;
     public deposit() {
         initComponents();
         setLocationRelativeTo(null);
@@ -452,7 +453,7 @@ public class deposit extends javax.swing.JFrame  {
     }//GEN-LAST:event_DconfirmActionPerformed
 
     private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
-        udashboard dashboard = new udashboard(accId);
+        udashboard dashboard = new udashboard(accId,aiFrame);
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
 

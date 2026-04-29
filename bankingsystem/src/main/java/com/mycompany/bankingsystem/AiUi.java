@@ -3,7 +3,9 @@ package com.mycompany.bankingsystem;
 import javax.swing.JOptionPane;
 
 public class AiUi extends javax.swing.JFrame {
-
+    int accId;
+    boolean aiFrame;
+    udashboard parent;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AiUi.class.getName());
 
     //temporary user
@@ -31,6 +33,25 @@ public class AiUi extends javax.swing.JFrame {
         UserInputTextField.requestFocusInWindow();
         setVisible(true);
     }
+    public AiUi(int id, boolean ai) {
+        initComponents();
+        setLocationRelativeTo(null);
+        ChatBoxTextArea.setEditable(false);
+        ChatBoxTextArea.setLineWrap(true);
+        ChatBoxTextArea.setWrapStyleWord(true);
+        UserInputTextField.requestFocusInWindow();
+        setVisible(true);
+        aiFrame = ai;
+    }
+    public AiUi(int id, boolean ai, udashboard parentFrame) {
+        initComponents();
+        this.parent = parentFrame;
+        accId = id;
+        aiFrame = ai;
+
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +69,7 @@ public class AiUi extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         UserInputTextField = new javax.swing.JTextField();
         InputBtn = new javax.swing.JButton();
-        BackBtn = new javax.swing.JButton();
+        closeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 102, 0));
@@ -77,10 +98,10 @@ public class AiUi extends javax.swing.JFrame {
         InputBtn.setText("Enter");
         InputBtn.addActionListener(this::InputBtnActionPerformed);
 
-        BackBtn.setBackground(new java.awt.Color(255, 196, 196));
-        BackBtn.setForeground(new java.awt.Color(133, 14, 53));
-        BackBtn.setText("Back");
-        BackBtn.addActionListener(this::BackBtnActionPerformed);
+        closeBtn.setBackground(new java.awt.Color(255, 196, 196));
+        closeBtn.setForeground(new java.awt.Color(133, 14, 53));
+        closeBtn.setText("Close");
+        closeBtn.addActionListener(this::closeBtnActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,29 +111,29 @@ public class AiUi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BackBtn)
+                        .addComponent(closeBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AiTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(UserInputTextField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(102, 102, 102)
                 .addComponent(InputBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(101, 101, 101))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AiTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BackBtn))
+                    .addComponent(closeBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,9 +186,14 @@ public class AiUi extends javax.swing.JFrame {
         UserInputTextField.requestFocusInWindow();
     }//GEN-LAST:event_InputBtnActionPerformed
 
-    private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BackBtnActionPerformed
+    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
+        dispose();
+        
+        parent.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_closeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,10 +222,10 @@ public class AiUi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AiTitle;
-    private javax.swing.JButton BackBtn;
     private javax.swing.JTextArea ChatBoxTextArea;
     private javax.swing.JButton InputBtn;
     private javax.swing.JTextField UserInputTextField;
+    private javax.swing.JButton closeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

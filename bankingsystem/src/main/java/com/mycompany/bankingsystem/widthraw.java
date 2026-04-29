@@ -10,6 +10,7 @@ package com.mycompany.bankingsystem;
  */
 public class widthraw extends javax.swing.JFrame {
     int accId;
+    boolean aiFrame;
     /**
      * Creates new form widthraw
      */
@@ -480,7 +481,7 @@ public class widthraw extends javax.swing.JFrame {
     }//GEN-LAST:event_savings3ActionPerformed
 
     private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
-        udashboard dashboard = new udashboard(accId);
+        udashboard dashboard = new udashboard(accId,aiFrame);
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
 
