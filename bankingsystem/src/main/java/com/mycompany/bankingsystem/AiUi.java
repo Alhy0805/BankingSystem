@@ -3,14 +3,14 @@ package com.mycompany.bankingsystem;
 import javax.swing.JOptionPane;
 
 public class AiUi extends javax.swing.JFrame {
-    int accId;
+    public static int accId;
     boolean aiFrame;
     udashboard parent;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AiUi.class.getName());
 
     //temporary user
-    public static String user = "Maju";
-    public static String posit = "Admin";
+    public static String user = "Me";
+    public static String posit;
 
     public javax.swing.JTextArea getChatBoxTextArea() {
         return ChatBoxTextArea;
@@ -52,6 +52,19 @@ public class AiUi extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
+    public AiUi(int id, boolean ai, udashboard parentFrame,String pos) {
+        initComponents();
+        this.parent = parentFrame;
+        accId = id;
+        aiFrame = ai;
+        posit = pos;
+        setLocationRelativeTo(null);
+        ChatBoxTextArea.setEditable(false);
+        ChatBoxTextArea.setLineWrap(true);
+        ChatBoxTextArea.setWrapStyleWord(true);
+        UserInputTextField.requestFocusInWindow();
+        setVisible(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,6 +88,7 @@ public class AiUi extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 102, 0));
 
         jPanel1.setBackground(new java.awt.Color(133, 14, 53));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         AiTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         AiTitle.setForeground(new java.awt.Color(252, 245, 238));

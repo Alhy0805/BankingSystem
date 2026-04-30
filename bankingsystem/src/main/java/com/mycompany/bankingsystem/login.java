@@ -158,7 +158,7 @@ public class login extends javax.swing.JFrame {
                         }
 
                         if ("user".equals(dbposition)) {
-                            new udashboard(dbid,aiFrame).setVisible(true);
+                            new udashboard(dbid,aiFrame,dbposition).setVisible(true);
                             return;
                         }
                     }

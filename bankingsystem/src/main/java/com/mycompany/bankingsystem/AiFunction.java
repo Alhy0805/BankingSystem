@@ -105,6 +105,26 @@ public class AiFunction {
                 System.out.println("SELECT BY NAME EXECUTED");
                 break;
             }
+            
+            case "transfer": {
+                int userId = getInt(p, "senderId");
+                int actId = getInt(p, "receiverId");
+                double amount = getDouble(p, "amount");
+                
+                databaseLogic.Transfer(actId, amount, ui);
+                break;
+            }
+            case "setSavingWithdraw":{
+                double amount = getDouble(p, "amount");
+                databaseLogic.setSavingsWithdraw(amount, ui);
+                break;
+            }
+            
+            case "setSavingDeposit":{
+                double amount = getDouble(p, "amount");
+                databaseLogic.setSavingsDeposit(amount, ui);
+                break;
+            }
 
             case "chatBot": {
                 String message = getString(p, "message");

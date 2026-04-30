@@ -12,6 +12,7 @@ public class udashboard extends javax.swing.JFrame {
      int accId;
      boolean aiFrame = false;
      boolean mainFrame = true;
+     String posit;
     /**
      * Creates new form udashboard
      */
@@ -28,6 +29,38 @@ public class udashboard extends javax.swing.JFrame {
         accId = id;
         aiFrame = ai;
       
+        if(!ai){
+            setVisible(false);
+            setVisible(true);
+        }    
+        
+        
+        
+        
+        cdb db = new cdb();
+        double Damount = db.getTotalDep(id);
+        depAmount.setText(String.format("%.2f", Damount));
+        
+        double Wamount = db.getTotalWith(id);
+        withAmount.setText(String.format("%.2f", Wamount));
+        
+        double Transamount = db.getTotalTrans(id);
+        transAmount.setText(String.format("%.2f", Transamount));
+        
+        double Samount = db.getSavings(id);
+        savAmount.setText(String.format("%.2f", Samount));
+        
+        double Lamount = db.getTotalLoan(id);
+        loanAmount.setText(String.format("%.2f", Lamount));
+    }
+    public udashboard(int id, boolean ai,String pos){
+        initComponents();
+        setLocationRelativeTo(null);
+        
+        accId = id;
+        aiFrame = ai;
+        posit = pos;
+        
         if(!ai){
             setVisible(false);
             setVisible(true);
@@ -630,7 +663,7 @@ public class udashboard extends javax.swing.JFrame {
     private void dianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dianaActionPerformed
         
          // hide main dashboard
-        new AiUi(accId, true, this);
+        new AiUi(accId, true, this,posit);
         // TODO add your handling code here:
     }//GEN-LAST:event_dianaActionPerformed
 

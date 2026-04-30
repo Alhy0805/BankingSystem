@@ -10,90 +10,106 @@ import java.net.http.HttpResponse;
 public class OllamaService {
 
     private static final String SYSTEM_PROMPT =
-    "You are a STRICT function-calling AI.\n" +
+        "You are a STRICT function-calling AI.\n"
+        + "OUTPUT RULES:\n"
+        + "- Output ONLY valid JSON\n"
+        + "- No explanation\n"
+        + "- No extra text\n"
+        + "- EXACTLY ONE JSON object\n"
+        + "OUTPUT FORMAT (STRICT JSON):\n"
+        + "{\n"
+        + "  \"action\": \"string\",\n"
+        + "  \"parameters\": {\n"
+        + "    \"key\": \"value\"\n"
+        + "  }\n"
+        + "}\n\n"
+        + "- Ensure all braces {} are properly closed\n"
 
-    "OUTPUT RULES:\n" +
-    "- Output ONLY valid JSON\n" +
-    "- No explanation\n" +
-    "- No extra text\n" +
-    "- EXACTLY ONE JSON object\n" +
-    "- Format:\n" +
-    "{ \"action\": string, \"parameters\": object }\n\n" +
+        + "VALID ACTIONS:\n"
 
-    "VALID ACTIONS:\n" +
+        + "1. addUser -> {\"name\": string, \"sbal\": double, \"lbal\": double, \"status\": string, \"position\": string, \"pin\": int}\n"
+        + "   Description: Create a new user with name, savings balance, loan balance, status, role, and PIN.\n"
 
-    "1. addUser -> {\"name\": string, \"sbal\": double, \"lbal\": double, \"status\": string, \"position\": string, \"pin\": int}\n" +
-    "   Description: Create a new user with complete details including name, saving, loan, status, position, and PIN.\n" +
+        + "2. updateUserName -> {\"id\": int, \"name\": string}\n"
+        + "   Description: Change the full name of a user using their ID.\n"
 
-    "2. updateUserName -> {\"id\": int, \"name\": string}\n" +
-    "   Description: Update the name of an existing user by ID.\n" +
+        + "3. updateUserSBal -> {\"id\": int, \"sbal\": double}\n"
+        + "   Description: Update the user's savings balance. Must be a positive value.\n"
 
-    "3. updateUserSBal -> {\"id\": int, \"sbal\": double}\n" +
-    "   Description: Update the savings balance (SBal) of a user. Value must be positive.\n" +
+        + "4. updateUserLBal -> {\"id\": int, \"lbal\": double}\n"
+        + "   Description: Update the user's loan balance. Must be a positive value.\n"
 
-    "4. updateUserLBal -> {\"id\": int, \"lbal\": double}\n" +
-    "   Description: Update the loan balance (LBal) of a user. Value must be positive.\n" +
+        + "5. updateUserStatus -> {\"id\": int, \"status\": string}\n"
+        + "   Description: Modify account status (active, inactive, suspended).\n"
 
-    "5. updateUserStatus -> {\"id\": int, \"status\": string}\n" +
-    "   Description: Change the account status of a user (e.g., active, inactive, suspended).\n" +
+        + "6. updateUserPosition -> {\"id\": int, \"position\": string}\n"
+        + "   Description: Change the user's role (admin, user, manager).\n"
 
-    "6. updateUserPosition -> {\"id\": int, \"position\": string}\n" +
-    "   Description: Update the user's role or position (e.g., admin, user, manager).\n" +
+        + "7. updateUserPin -> {\"id\": int, \"pin\": int}\n"
+        + "   Description: Update the user's PIN code.\n"
 
-    "7. updateUserPin -> {\"id\": int, \"pin\": int}\n" +
-    "   Description: Update the user's PIN code.\n" +
+        + "8. deleteUser -> {\"id\": int}\n"
+        + "   Description: Permanently delete a user using their ID.\n"
 
-    "8. deleteUser -> {\"id\": int}\n" +
-    "   Description: Remove a user from the system using their ID.\n" +
+        + "9. selectUserId -> {\"id\": int}\n"
+        + "   Description: Retrieve user details using ID.\n"
 
-    "9. selectUserId -> {\"id\": int}\n" +
-    "   Description: Retrieve user details using their ID.\n" +
+        + "10. selectUserName -> {\"name\": string}\n"
+        + "    Description: Retrieve user details using full name.\n"
 
-    "10. selectUserName -> {\"name\": string}\n" +
-    "    Description: Retrieve user details using their name.\n" +
+        + "11. transfer -> {\"receiverId\": int, \"amount\": double}\n"
+        + "    Description: Transfer money from the current user to another user.\n"
 
-    "11. chatBot -> {\"message\": string}\n" +
-    "    Description: Respond conversationally when the request does not match any valid action or lacks required data.\n\n" +
+        + "12. setSavingWithdraw -> {\"amount\": double}\n"
+        + "    Description: Withdraw money from the current user's savings balance.\n"
 
-    "STRICT ACTION MAPPING:\n" +
-    "- If input contains 'add' → use addUser\n" +
-    "- If input contains 'delete' → use deleteUser\n" +
-    "- If input contains 'update name' → use updateUserName\n" +
-    "- If input contains 'update savings' or 'update sbal' → use updateUserSBal\n" +
-    "- If input contains 'update loan' or 'update lbal' → use updateUserLBal\n" +
-    "- If input contains 'update status' → use updateUserStatus\n" +
-    "- If input contains 'update position' → use updateUserPosition\n" +
-    "- If input contains 'update pin' → use updateUserPin\n" +
-    "- If input contains 'select by id' or 'find user by id' → use selectUserId\n" +
-    "- If input contains 'select by name' or 'find user by name' → use selectUserName\n" +
-    "- Otherwise → use chatBot\n\n" +
+        + "13. setSavingDeposit -> {\"amount\": double}\n"
+        + "    Description: Deposit money into the current user's savings balance.\n"
 
-    "STRICT RULES:\n" +
-    "- If you use chatBot make sure to put your response to user prompt to the parameters\n" +
-    "- NEVER guess missing parameters\n" +
-    "- NEVER output null\n" +
-    "- MUST match exact parameter names\n" +
-    "- addUser MUST NOT include id\n" +
-    "- SBal and LBal must always be positive\n\n" +
+        + "14. chatBot -> {\"message\": string}\n"
+        + "    Description: Respond conversationally when no valid action applies.\n\n"
 
-    "FALLBACK:\n" +
-    "- If required data is missing → use chatBot\n\n" +
+        + "STRICT ACTION MAPPING:\n"
+        + "- If input contains 'add' → use addUser\n"
+        + "- If input contains 'delete' → use deleteUser\n"
+        + "- If input contains 'update name' → use updateUserName\n"
+        + "- If input contains 'update savings' or 'update sbal' → use updateUserSBal\n"
+        + "- If input contains 'update loan' or 'update lbal' → use updateUserLBal\n"
+        + "- If input contains 'update status' → use updateUserStatus\n"
+        + "- If input contains 'update position' → use updateUserPosition\n"
+        + "- If input contains 'update pin' → use updateUserPin\n"
+        + "- If input contains 'select by id' → use selectUserId\n"
+        + "- If input contains 'select by name' → use selectUserName\n"
+        + "- If input contains 'transfer', 'send', or 'give' → use transfer\n"
+        + "- If input contains 'withdraw' → use setSavingWithdraw\n"
+        + "- If input contains 'deposit' → use setSavingDeposit\n"
+        + "- Otherwise → use chatBot\n\n"
 
-    "INPUT RULE:\n" +
-    "- Only read text between ### USER INPUT ### and ### END ###\n";
+        + "STRICT RULES:\n"
+        + "- NEVER guess missing parameters\n"
+        + "- NEVER output null\n"
+        + "- MUST match exact parameter names\n"
+        + "- addUser MUST NOT include id\n"
+        + "- All balances must be positive\n\n"
+
+        + "FALLBACK:\n"
+        + "- If required data is missing → use chatBot\n\n"
+
+        + "INPUT RULE:\n"
+        + "- Only read text between ### USER INPUT ### and ### END ###\n";
 
     public static String askAI(String userText) throws Exception {
 
         String prompt = SYSTEM_PROMPT
-    + "\n### USER INPUT ###\n"
-    + userText
-    + "\n### END ### + follow the instruction especially addUser does not require id";
+                + "\n### USER INPUT ###\n"
+                + userText
+                + "\n### END ### + follow the instruction especially addUser does not require id";
 
         String url = "http://localhost:11434/api/generate";
 
         // ✅ SAFE JSON BUILDING (NO MANUAL ESCAPING)
         JsonObject body = new JsonObject();
-        body.addProperty("model", "phi3");
+        body.addProperty("model", "llama3");
         body.addProperty("prompt", prompt);
         body.addProperty("stream", false);
 
