@@ -266,7 +266,63 @@ public class cdb {
 
         return amount;
     }
+    public static void addUser(String name,int age,String address,String phone,int pin, String pos, String sex) {
+        int accId = 0;
+        
+            String sqlSetMaintable = "INSERT INTO bankingaccounts (fullName,position,pin) VALUES (?, ?, ?)";
+            try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sqlSetMaintable)) {
+
+                    stmt.setString(1, name);
+                    stmt.setString(2, pos);
+                    stmt.setInt(3, pin);
+                    
+                    
+                    stmt.executeUpdate();
+
+                    
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            String sqlGetAccId = "SELECT accId FROM bankingaccounts WHERE fullname = ?";
+
+            try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sqlGetAccId)) {
+
+                stmt.setString(1, name); 
+
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    accId = rs.getInt("accId");
+                    
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            String sqlSetChildtable = "INSERT INTO users (full_name,age,address,phone_number,sex,acc_id) VALUES (?, ?, ?, ?,?,?)";
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure your informations are correct?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sqlSetChildtable)) {
+
+                    stmt.setString(1, name);
+                    stmt.setInt(2, age);
+                    stmt.setString(3, address);
+                    stmt.setString(4, phone);
+                    stmt.setString(5, sex);
+                    stmt.setInt(6,accId);
+                    
+                    stmt.executeUpdate();
+
+                    
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
     
+    }
     
     
 }

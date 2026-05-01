@@ -4,6 +4,9 @@
  */
 package com.mycompany.bankingsystem;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 /**
  *
  * @author student
@@ -11,6 +14,7 @@ package com.mycompany.bankingsystem;
 public class sbalance extends javax.swing.JFrame {
     int accId;
     boolean aiFrame;
+    String posit;
     
     /**
      * Creates new form widthraw
@@ -20,12 +24,25 @@ public class sbalance extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    public sbalance(int id) {
+    public sbalance(int id,String pos) {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
         accId = id;
-        loadBalance(); // ✅ call it here
+        loadBalance();
+        posit = pos;
+        
+        profile pfp = new profile();
+        pfp.setPreferredSize(new Dimension(100, 100));
+    
+        pfpContainer2.setLayout(new BorderLayout());
+
+    
+        pfpContainer2.add(pfp, BorderLayout.CENTER);
+
+    
+        pfpContainer2.revalidate();
+        pfpContainer2.repaint();
     }
 
     private void loadBalance() {
@@ -55,6 +72,7 @@ public class sbalance extends javax.swing.JFrame {
         settings = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         pfpContainer = new javax.swing.JPanel();
+        pfpContainer2 = new javax.swing.JPanel();
         savings3 = new javax.swing.JButton();
         dashboard = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -74,13 +92,15 @@ public class sbalance extends javax.swing.JFrame {
         setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(133, 14, 53));
+        mainPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         mainPanel.setPreferredSize(new java.awt.Dimension(1200, 650));
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 3, 27)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 27)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(252, 245, 238));
         jLabel1.setText("Welcome");
 
         buttonsPanel.setBackground(new java.awt.Color(252, 245, 238));
+        buttonsPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buttonsPanel.setForeground(new java.awt.Color(252, 245, 238));
         buttonsPanel.setPreferredSize(new java.awt.Dimension(200, 500));
 
@@ -160,15 +180,30 @@ public class sbalance extends javax.swing.JFrame {
             }
         });
 
+        pfpContainer2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Banko ni Negro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_BOTTOM, new java.awt.Font("Microsoft Sans Serif", 1, 18), new java.awt.Color(133, 14, 53))); // NOI18N
+        pfpContainer2.setForeground(new java.awt.Color(133, 14, 53));
+        pfpContainer2.setMaximumSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout pfpContainer2Layout = new javax.swing.GroupLayout(pfpContainer2);
+        pfpContainer2.setLayout(pfpContainer2Layout);
+        pfpContainer2Layout.setHorizontalGroup(
+            pfpContainer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pfpContainer2Layout.setVerticalGroup(
+            pfpContainer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pfpContainerLayout = new javax.swing.GroupLayout(pfpContainer);
         pfpContainer.setLayout(pfpContainerLayout);
         pfpContainerLayout.setHorizontalGroup(
             pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(pfpContainer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pfpContainerLayout.setVerticalGroup(
             pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
+            .addComponent(pfpContainer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         savings3.setBackground(new java.awt.Color(238, 105, 131));
@@ -196,28 +231,30 @@ public class sbalance extends javax.swing.JFrame {
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                    .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
-                        .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(dashboard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                    .addGroup(buttonsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(transfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                                .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dashboard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
+                .addGap(40, 40, 40)
                 .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,17 +276,22 @@ public class sbalance extends javax.swing.JFrame {
         );
 
         jPanel1.setBackground(new java.awt.Color(252, 245, 238));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setPreferredSize(new java.awt.Dimension(755, 415));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        jPanel3.setBackground(new java.awt.Color(255, 196, 196));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 14, 53), 1, true));
 
-        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 3, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(133, 14, 53));
         jLabel2.setText("SAVINGS");
 
         jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(133, 14, 53));
         jLabel3.setText("Current Balance");
 
-        sBalance.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        sBalance.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 24)); // NOI18N
+        sBalance.setForeground(new java.awt.Color(133, 14, 53));
         sBalance.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         sBalance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +336,7 @@ public class sbalance extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
         );
@@ -308,21 +350,21 @@ public class sbalance extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(330, 330, 330)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(71, 71, 71)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -340,22 +382,22 @@ public class sbalance extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositActionPerformed
-        deposit userDash = new deposit(accId);
+        deposit userDash = new deposit(accId,posit);
         transition.switchFrame(this,userDash);
     }//GEN-LAST:event_depositActionPerformed
 
     private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawActionPerformed
-        widthraw with = new widthraw(accId);
+        widthraw with = new widthraw(accId,posit);
         transition.switchFrame(this,with);
     }//GEN-LAST:event_withdrawActionPerformed
 
     private void transferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferActionPerformed
-        transfer trans = new transfer(accId);
+        transfer trans = new transfer(accId,posit);
         transition.switchFrame(this,trans);
     }//GEN-LAST:event_transferActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed
-       loan loan = new loan(accId);
+       loan loan = new loan(accId,posit);
         transition.switchFrame(this,loan);
     }//GEN-LAST:event_loanActionPerformed
 
@@ -376,12 +418,12 @@ public class sbalance extends javax.swing.JFrame {
     }//GEN-LAST:event_sBalanceActionPerformed
 
     private void savings3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings3ActionPerformed
-       sbalance savings = new sbalance(accId);
+       sbalance savings = new sbalance(accId,posit);
         transition.switchFrame(this,savings);
     }//GEN-LAST:event_savings3ActionPerformed
 
     private void dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardActionPerformed
-        udashboard dashboard = new udashboard(accId,aiFrame);
+        udashboard dashboard = new udashboard(accId,aiFrame,posit);
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
 
@@ -437,6 +479,7 @@ public class sbalance extends javax.swing.JFrame {
     private javax.swing.JButton logout;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel pfpContainer;
+    private javax.swing.JPanel pfpContainer2;
     private javax.swing.JTextField sBalance;
     private javax.swing.JButton savings3;
     private javax.swing.JButton settings;

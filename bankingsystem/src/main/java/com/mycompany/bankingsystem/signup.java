@@ -1,6 +1,8 @@
 
 package com.mycompany.bankingsystem;
 import java.sql.*;
+import javax.swing.*;
+import java.awt.*;
 
 public class signup extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(signup.class.getName());
@@ -9,6 +11,9 @@ public class signup extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(male);
+        buttonGroup.add(fmale);
         
     }
 
@@ -17,19 +22,26 @@ public class signup extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         login = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
-        idIn = new javax.swing.JTextField();
+        nameIn = new javax.swing.JTextField();
         pin = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        signBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        pinIn1 = new javax.swing.JPasswordField();
         pin1 = new javax.swing.JLabel();
-        age = new javax.swing.JSpinner();
+        ageIn = new javax.swing.JSpinner();
         pin2 = new javax.swing.JLabel();
-        pinIn2 = new javax.swing.JPasswordField();
+        phoneIn = new javax.swing.JPasswordField();
+        email1 = new javax.swing.JLabel();
+        male = new javax.swing.JRadioButton();
+        fmale = new javax.swing.JRadioButton();
+        addressIn = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -41,6 +53,9 @@ public class signup extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 467, Short.MAX_VALUE)
         );
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 500));
@@ -55,38 +70,47 @@ public class signup extends javax.swing.JFrame {
         email.setForeground(new java.awt.Color(133, 14, 53));
         email.setText("FULL NAME");
 
-        idIn.setBackground(new java.awt.Color(252, 245, 238));
-        idIn.setForeground(new java.awt.Color(133, 14, 53));
+        nameIn.setBackground(new java.awt.Color(252, 245, 238));
+        nameIn.setForeground(new java.awt.Color(133, 14, 53));
+        nameIn.addActionListener(this::nameInActionPerformed);
 
         pin.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         pin.setForeground(new java.awt.Color(133, 14, 53));
         pin.setText("AGE");
 
-        jButton1.setBackground(new java.awt.Color(133, 14, 53));
-        jButton1.setForeground(new java.awt.Color(252, 245, 238));
-        jButton1.setText("SIGN IN");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        signBtn.setBackground(new java.awt.Color(133, 14, 53));
+        signBtn.setForeground(new java.awt.Color(252, 245, 238));
+        signBtn.setText("SIGN UP");
+        signBtn.addActionListener(this::signBtnActionPerformed);
 
         jButton2.setBackground(new java.awt.Color(255, 196, 196));
         jButton2.setText("Already have an account? Log-In");
         jButton2.setBorder(null);
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
-        pinIn1.setBackground(new java.awt.Color(252, 245, 238));
-        pinIn1.setForeground(new java.awt.Color(133, 14, 53));
-
         pin1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         pin1.setForeground(new java.awt.Color(133, 14, 53));
         pin1.setText("ADDRESS");
 
-        age.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
+        ageIn.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 1));
 
         pin2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         pin2.setForeground(new java.awt.Color(133, 14, 53));
         pin2.setText("PHONE NUMBER");
 
-        pinIn2.setBackground(new java.awt.Color(252, 245, 238));
-        pinIn2.setForeground(new java.awt.Color(133, 14, 53));
+        phoneIn.setBackground(new java.awt.Color(252, 245, 238));
+        phoneIn.setForeground(new java.awt.Color(133, 14, 53));
+
+        email1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
+        email1.setForeground(new java.awt.Color(133, 14, 53));
+        email1.setText("SEX");
+
+        male.setText("Male");
+
+        fmale.setText("Female");
+
+        addressIn.setBackground(new java.awt.Color(252, 245, 238));
+        addressIn.setForeground(new java.awt.Color(133, 14, 53));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -94,33 +118,44 @@ public class signup extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(40, 40, 40))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(signBtn)
+                        .addGap(78, 78, 78))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(27, 27, 27))))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pinIn2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pinIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idIn, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(email)
+                            .addComponent(pin)
+                            .addComponent(pin1)
+                            .addComponent(pin2)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(login))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(phoneIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                            .addComponent(addressIn, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameIn, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(ageIn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(email1)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(email)
-                                            .addComponent(pin)
-                                            .addComponent(pin1)
-                                            .addComponent(pin2))
-                                        .addGap(96, 96, 96))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(39, 39, 39)))
-                                .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(96, 96, 96)
-                            .addComponent(login))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                                        .addComponent(male)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fmale)))))))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,21 +165,26 @@ public class signup extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(email)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pin)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pin)
+                    .addComponent(email1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ageIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(male)
+                    .addComponent(fmale))
+                .addGap(18, 18, 18)
                 .addComponent(pin1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pinIn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addressIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(pin2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pinIn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(phoneIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(signBtn)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -185,9 +225,28 @@ public class signup extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void signBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signBtnActionPerformed
+        cdb db = new cdb();
+        String pin = JOptionPane.showInputDialog(null, "Enter Desired Pin:", "Input", JOptionPane.QUESTION_MESSAGE);
+        int pinInt = Integer.parseInt(pin);
+        String name = nameIn.getText();
+        int age = (int) ageIn.getValue();
+        String address = addressIn.getText();
+        String phone = phoneIn.getText();
+        String sex = "";
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (male.isSelected()) {
+            sex = "m";
+        }else if (fmale.isSelected()) {
+            sex = "f";
+        }
+        
+        db.addUser(name,age,address,phone,pinInt,"user",sex);
+    }//GEN-LAST:event_signBtnActionPerformed
+
+    private void nameInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInActionPerformed
+        
+    }//GEN-LAST:event_nameInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,19 +274,26 @@ public class signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner age;
+    private javax.swing.JTextField addressIn;
+    private javax.swing.JSpinner ageIn;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel email;
-    private javax.swing.JTextField idIn;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel email1;
+    private javax.swing.JRadioButton fmale;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel login;
+    private javax.swing.JRadioButton male;
+    private javax.swing.JTextField nameIn;
+    private javax.swing.JPasswordField phoneIn;
     private javax.swing.JLabel pin;
     private javax.swing.JLabel pin1;
     private javax.swing.JLabel pin2;
-    private javax.swing.JPasswordField pinIn1;
-    private javax.swing.JPasswordField pinIn2;
+    private javax.swing.JButton signBtn;
     // End of variables declaration//GEN-END:variables
 }
