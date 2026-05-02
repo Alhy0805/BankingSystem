@@ -266,15 +266,16 @@ public class cdb {
 
         return amount;
     }
-    public static void addUser(String name,int age,String address,String phone,int pin, String pos, String sex) {
+    public static void addUser(String name,int age,String address,String phone,int pin, String pos, String sex,String status) {
         int accId = 0;
         
-            String sqlSetMaintable = "INSERT INTO bankingaccounts (fullName,position,pin) VALUES (?, ?, ?)";
+            String sqlSetMaintable = "INSERT INTO bankingaccounts (fullName,position,pin,status) VALUES (?, ?, ?,?)";
             try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sqlSetMaintable)) {
 
                     stmt.setString(1, name);
                     stmt.setString(2, pos);
                     stmt.setInt(3, pin);
+                    stmt.setString(4, status);
                     
                     
                     stmt.executeUpdate();
@@ -321,8 +322,115 @@ public class cdb {
                     e.printStackTrace();
                 }
             }
-    
+            // Success with a title and info icon
+            JOptionPane.showMessageDialog(null, "Sign up successfully!\n Account ID: "+accId, "Success", JOptionPane.INFORMATION_MESSAGE);
     }
-    
-    
+    public double getCapital() {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT sum(sBalance)AS sBalance FROM bankingAccounts;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("sBalance");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+    public double getWithdrawals() {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT sum(totalWith)AS totalWith FROM bankingAccounts;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("totalWith");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+    public double getRevenue() {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT sum(interest)AS interest FROM transactions;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("interest");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+    public double getActiveLoan() {
+    double amount = 0.0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT sum(lBalance)AS lBalance FROM bankingaccounts;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                amount = rs.getDouble("lBalance");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return amount;
+    }
+    public int getActiveUser() {
+    int count = 0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT count(status)AS active FROM bankingaccounts where status = 'active'";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt("active");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }
+    public int getDeacUser() {
+    int count = 0;
+
+        try (Connection conn = dbconn.connect()) {
+            String sql = "SELECT count(status)AS deac FROM bankingaccounts where status = 'deactive'";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt("deac");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return count;
+    }
 }

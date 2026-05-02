@@ -241,7 +241,7 @@ public class signup extends javax.swing.JFrame {
             sex = "f";
         }
         
-        db.addUser(name,age,address,phone,pinInt,"user",sex);
+        db.addUser(name,age,address,phone,pinInt,"user",sex,"active");
     }//GEN-LAST:event_signBtnActionPerformed
 
     private void nameInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInActionPerformed

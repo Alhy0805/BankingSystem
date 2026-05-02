@@ -152,7 +152,7 @@ public class login extends javax.swing.JFrame {
                         this.setVisible(false); // Hide login once found
                          found = true;
 
-                        if ("admin".equals(dbposition)) {
+                        if ("Admin".equals(dbposition)) {
                             new adminDashboard(dbid).setVisible(true);
                             return; // Exit loop and method
                         }

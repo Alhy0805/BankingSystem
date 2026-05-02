@@ -4,11 +4,16 @@
  */
 package com.mycompany.bankingsystem;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,16 +21,45 @@ import javax.swing.table.DefaultTableModel;
  * @author Student
  */
 public class searchUser extends javax.swing.JFrame {
-
+    int accId;
     /**
      * Creates new form searchUser
      */
     public searchUser() {
         initComponents();
-        updateTable();
+        
         setLocationRelativeTo(null);
     }
+    public searchUser(int id) {
+        initComponents();
+        
+        setLocationRelativeTo(null);
+        accId = id;
+        
+        profile pfp = new profile();
+        pfp.setPreferredSize(new Dimension(100, 100));
+    
+        pfpContainer.setLayout(new BorderLayout());
+
+    
+        pfpContainer.add(pfp, BorderLayout.CENTER);
+
+    
+        pfpContainer.revalidate();
+        pfpContainer.repaint();
+        
+        selStat.add("none");
+        selStat.add("active");
+        selStat.add("deactive");
+
+        
+    
+        
+        updateTable();
+    }
     private void updateTable(){
+        
+        
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
         String user = "root";
@@ -35,6 +69,7 @@ public class searchUser extends javax.swing.JFrame {
         try(Connection conn = DriverManager.getConnection(url,user,pass)){
             String sql = "select* from bankingAccounts";
             PreparedStatement pstmt = conn.prepareStatement(sql);
+
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 int id = rs.getInt("accId");
@@ -48,7 +83,50 @@ public class searchUser extends javax.swing.JFrame {
         }catch(SQLException e){
             e.printStackTrace();
         }
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < mainTable.getColumnCount(); i++) {
+            mainTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+    }
+    private void FilteredTable(int fid,String fname, String fstat){
         
+        
+        DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
+        model.setRowCount(0);
+        String user = "root";
+        String pass = "Alhyohan";
+        String url = "jdbc:mysql://localhost:3306/bankingDb";
+        
+        try(Connection conn = DriverManager.getConnection(url,user,pass)){
+            String sql = "SELECT * FROM bankingAccounts WHERE " +
+             "CAST(accId AS CHAR) LIKE ? OR " +
+             "fullName LIKE ? OR " +
+             "status LIKE ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, "%" + fid + "%");
+            pstmt.setString(2, "%" + fname + "%");
+            pstmt.setString(3, "%" + fstat + "%");
+            
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("accId");
+                String name = rs.getString("fullName");
+                double savings = rs.getDouble("sBalance");
+                double loans = rs.getDouble("lBalance");
+                String status = rs.getString("status");
+                
+                model.addRow(new Object[]{id,name,savings,loans,status});
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < mainTable.getColumnCount(); i++) {
+            mainTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,12 +138,21 @@ public class searchUser extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        dashboardBtn = new javax.swing.JButton();
         searchBtn = new javax.swing.JButton();
         settingsBtn = new javax.swing.JButton();
         dataBtn = new javax.swing.JButton();
+        pfpContainer = new javax.swing.JPanel();
+        dash = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainTable = new javax.swing.JTable();
+        selId = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        filter = new javax.swing.JButton();
+        selName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        selStat = new java.awt.Choice();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,18 +160,8 @@ public class searchUser extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 500));
 
-        dashboardBtn.setBackground(new java.awt.Color(255, 196, 196));
-        dashboardBtn.setForeground(new java.awt.Color(133, 14, 53));
-        dashboardBtn.setText("Dashboard");
-        dashboardBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        dashboardBtn.setPreferredSize(new java.awt.Dimension(75, 35));
-        dashboardBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dashboardBtnActionPerformed(evt);
-            }
-        });
-
-        searchBtn.setBackground(new java.awt.Color(244, 246, 249));
+        searchBtn.setBackground(new java.awt.Color(238, 105, 131));
+        searchBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         searchBtn.setForeground(new java.awt.Color(133, 14, 53));
         searchBtn.setText("Accounts");
         searchBtn.setPreferredSize(new java.awt.Dimension(72, 35));
@@ -94,12 +171,14 @@ public class searchUser extends javax.swing.JFrame {
             }
         });
 
-        settingsBtn.setBackground(new java.awt.Color(244, 246, 249));
+        settingsBtn.setBackground(new java.awt.Color(255, 196, 196));
+        settingsBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         settingsBtn.setForeground(new java.awt.Color(133, 14, 53));
         settingsBtn.setText("Settings");
         settingsBtn.setPreferredSize(new java.awt.Dimension(75, 35));
 
-        dataBtn.setBackground(new java.awt.Color(244, 246, 249));
+        dataBtn.setBackground(new java.awt.Color(255, 196, 196));
+        dataBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         dataBtn.setForeground(new java.awt.Color(133, 14, 53));
         dataBtn.setText("Data");
         dataBtn.setPreferredSize(new java.awt.Dimension(75, 35));
@@ -109,33 +188,77 @@ public class searchUser extends javax.swing.JFrame {
             }
         });
 
+        pfpContainer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Banko ni Negro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_BOTTOM, new java.awt.Font("Microsoft Sans Serif", 1, 18), new java.awt.Color(133, 14, 53))); // NOI18N
+        pfpContainer.setForeground(new java.awt.Color(133, 14, 53));
+        pfpContainer.setMaximumSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout pfpContainerLayout = new javax.swing.GroupLayout(pfpContainer);
+        pfpContainer.setLayout(pfpContainerLayout);
+        pfpContainerLayout.setHorizontalGroup(
+            pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pfpContainerLayout.setVerticalGroup(
+            pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 83, Short.MAX_VALUE)
+        );
+
+        dash.setBackground(new java.awt.Color(255, 196, 196));
+        dash.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        dash.setForeground(new java.awt.Color(133, 14, 53));
+        dash.setText("Dashboard");
+        dash.setPreferredSize(new java.awt.Dimension(72, 35));
+        dash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dashActionPerformed(evt);
+            }
+        });
+
+        logout.setBackground(new java.awt.Color(255, 196, 196));
+        logout.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        logout.setForeground(new java.awt.Color(133, 14, 53));
+        logout.setText("Logout");
+        logout.setPreferredSize(new java.awt.Dimension(75, 35));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(settingsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(dashboardBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dataBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dash, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(settingsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                            .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dataBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dashboardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(dash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(168, 168, 168)
                 .addComponent(settingsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
+        mainTable.setBackground(new java.awt.Color(255, 196, 196));
+        mainTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 14, 53), 1, true));
+        mainTable.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
+        mainTable.setForeground(new java.awt.Color(133, 14, 53));
         mainTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -162,14 +285,33 @@ public class searchUser extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        mainTable.setGridColor(new java.awt.Color(133, 14, 53));
+        mainTable.setShowGrid(true);
         jScrollPane1.setViewportView(mainTable);
         if (mainTable.getColumnModel().getColumnCount() > 0) {
             mainTable.getColumnModel().getColumn(0).setResizable(false);
-            mainTable.getColumnModel().getColumn(1).setResizable(false);
-            mainTable.getColumnModel().getColumn(2).setResizable(false);
-            mainTable.getColumnModel().getColumn(3).setResizable(false);
             mainTable.getColumnModel().getColumn(4).setResizable(false);
         }
+
+        selId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selIdActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("ID:");
+
+        filter.setBackground(new java.awt.Color(255, 196, 196));
+        filter.setText("Filter");
+        filter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Name:");
+
+        jLabel3.setText("Status:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,32 +320,48 @@ public class searchUser extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addGap(3, 3, 3)
+                        .addComponent(selId, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selStat, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(filter)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(selId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addComponent(selName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3))
+                    .addComponent(filter, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(selStat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dashboardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardBtnActionPerformed
-        adminDashboard adminD = new adminDashboard();
-        this.setVisible(false);
-        this.dispose();
-        adminD.setVisible(true);
-
-    }//GEN-LAST:event_dashboardBtnActionPerformed
-
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        searchUser sUser = new searchUser();
+        searchUser sUser = new searchUser(accId);
         this.setVisible(false);
         this.dispose();
         sUser.setVisible(true);
@@ -215,6 +373,33 @@ public class searchUser extends javax.swing.JFrame {
        data.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_dataBtnActionPerformed
+
+    private void dashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashActionPerformed
+        adminDashboard dash =  new adminDashboard(accId);
+        this.setVisible(false);
+        this.dispose();
+        dash.setVisible(true);
+    }//GEN-LAST:event_dashActionPerformed
+
+    private void selIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selIdActionPerformed
+
+    private void filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterActionPerformed
+        
+        
+        if (selId.getText().trim().isEmpty() && selName.getText().trim().isEmpty() && selStat.getSelectedItem().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Input At Least One", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else {
+            int ID = selId.getText().trim().isEmpty() ? 0 : Integer.parseInt(selId.getText().trim());
+            String NAME = selName.getText().trim();
+            String STAT = selStat.getSelectedItem().trim();
+            FilteredTable(ID, NAME, STAT);
+        }
+        
+        
+    }//GEN-LAST:event_filterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,12 +438,21 @@ public class searchUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton dashboardBtn;
+    private javax.swing.JButton dash;
     private javax.swing.JButton dataBtn;
+    private javax.swing.JButton filter;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logout;
     private javax.swing.JTable mainTable;
+    private javax.swing.JPanel pfpContainer;
     private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField selId;
+    private javax.swing.JTextField selName;
+    private java.awt.Choice selStat;
     private javax.swing.JButton settingsBtn;
     // End of variables declaration//GEN-END:variables
 }                  
