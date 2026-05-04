@@ -674,7 +674,8 @@ public class udashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_transacActionPerformed
 
     private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
-        // TODO add your handling code here:
+        Setting set = new Setting(accId,aiFrame,posit);
+        transition.switchFrame(this,set);
     }//GEN-LAST:event_settingsActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed

@@ -48,9 +48,9 @@ public class searchUser extends javax.swing.JFrame {
         pfpContainer.revalidate();
         pfpContainer.repaint();
         
-        selStat.add("none");
-        selStat.add("active");
-        selStat.add("deactive");
+        filterType.add("ID");
+        filterType.add("Name");
+        filterType.add("Status");
 
         
     
@@ -89,41 +89,120 @@ public class searchUser extends javax.swing.JFrame {
             mainTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
     }
-    private void FilteredTable(int fid,String fname, String fstat){
+    private void FilteredTable(int fid){
         
         
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
+
         String user = "root";
         String pass = "Alhyohan";
         String url = "jdbc:mysql://localhost:3306/bankingDb";
-        
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
-            String sql = "SELECT * FROM bankingAccounts WHERE " +
-             "CAST(accId AS CHAR) LIKE ? OR " +
-             "fullName LIKE ? OR " +
-             "status LIKE ?";
 
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, "%" + fid + "%");
-            pstmt.setString(2, "%" + fname + "%");
-            pstmt.setString(3, "%" + fstat + "%");
-            
-            ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
-                int id = rs.getInt("accId");
-                String name = rs.getString("fullName");
-                double savings = rs.getDouble("sBalance");
-                double loans = rs.getDouble("lBalance");
-                String status = rs.getString("status");
-                
-                model.addRow(new Object[]{id,name,savings,loans,status});
+        String sql = "SELECT * FROM bankingAccounts WHERE accId =" + fid;
+                 
+
+        try (Connection conn = DriverManager.getConnection(url, user, pass);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
+
+            try (ResultSet rs = pstmt.executeQuery()) {                      // ← also auto-close rs
+                while (rs.next()) {                                          // ✅ Fixed
+                    int id          = rs.getInt("accId");
+                    String name     = rs.getString("fullName");
+                    double savings  = rs.getDouble("sBalance");
+                    double loans    = rs.getDouble("lBalance");
+                    String status   = rs.getString("status");
+
+                    model.addRow(new Object[]{id, name, savings, loans, status});
+                }
             }
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);               // ✅ Fixed
+
+        for (int i = 0; i < mainTable.getColumnCount(); i++) {
+            mainTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+    }
+    private void FilteredTable(String NAME){
+        
+        
+        DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
+        model.setRowCount(0);
+
+        String user = "root";
+        String pass = "Alhyohan";
+        String url = "jdbc:mysql://localhost:3306/bankingDb";
+
+        String sql = "SELECT * FROM bankingAccounts WHERE fullname = ? ";
+                 
+
+        try (Connection conn = DriverManager.getConnection(url, user, pass);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
+            pstmt.setString(1,NAME);
+        
+        try (ResultSet rs = pstmt.executeQuery()) {                      // ← also auto-close rs
+            while (rs.next()) {                                          // ✅ Fixed
+                int id          = rs.getInt("accId");
+                String name     = rs.getString("fullName");
+                double savings  = rs.getDouble("sBalance");
+                double loans    = rs.getDouble("lBalance");
+                String status   = rs.getString("status");
+
+                model.addRow(new Object[]{id, name, savings, loans, status});
+            }
+        }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);               // ✅ Fixed
+
+        for (int i = 0; i < mainTable.getColumnCount(); i++) {
+            mainTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+    }
+    private void FilteredTableString(String STATUS){
+        
+        
+        DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
+        model.setRowCount(0);
+
+        String user = "root";
+        String pass = "Alhyohan";
+        String url = "jdbc:mysql://localhost:3306/bankingDb";
+
+        String sql = "SELECT * FROM bankingAccounts WHERE status = ?";
+                 
+
+        try (Connection conn = DriverManager.getConnection(url, user, pass);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
+            pstmt.setString(1,STATUS);
+            try (ResultSet rs = pstmt.executeQuery()) {                      // ← also auto-close rs
+                while (rs.next()) {                                          // ✅ Fixed
+                    int id          = rs.getInt("accId");
+                    String name     = rs.getString("fullName");
+                    double savings  = rs.getDouble("sBalance");
+                    double loans    = rs.getDouble("lBalance");
+                    String status   = rs.getString("status");
+
+                    model.addRow(new Object[]{id, name, savings, loans, status});
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);               // ✅ Fixed
+
         for (int i = 0; i < mainTable.getColumnCount(); i++) {
             mainTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
@@ -146,13 +225,11 @@ public class searchUser extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainTable = new javax.swing.JTable();
-        selId = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        filterInput = new javax.swing.JTextField();
         filter = new javax.swing.JButton();
-        selName = new javax.swing.JTextField();
+        filterType = new java.awt.Choice();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        selStat = new java.awt.Choice();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,7 +277,7 @@ public class searchUser extends javax.swing.JFrame {
         );
         pfpContainerLayout.setVerticalGroup(
             pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 83, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         dash.setBackground(new java.awt.Color(255, 196, 196));
@@ -293,13 +370,11 @@ public class searchUser extends javax.swing.JFrame {
             mainTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        selId.addActionListener(new java.awt.event.ActionListener() {
+        filterInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selIdActionPerformed(evt);
+                filterInputActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("ID:");
 
         filter.setBackground(new java.awt.Color(255, 196, 196));
         filter.setText("Filter");
@@ -309,9 +384,9 @@ public class searchUser extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Name:");
+        jLabel1.setText("Filter Type");
 
-        jLabel3.setText("Status:");
+        jLabel2.setText("Filter Data");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -321,38 +396,42 @@ public class searchUser extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addGap(3, 3, 3)
-                        .addComponent(selId, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filterType, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selStat, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(filter)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(filterInput, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filter))
+                            .addComponent(jLabel2))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(selId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)
-                        .addComponent(selName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3))
-                    .addComponent(filter, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(selStat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filterType, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(filterInput, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(filter))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -381,21 +460,29 @@ public class searchUser extends javax.swing.JFrame {
         dash.setVisible(true);
     }//GEN-LAST:event_dashActionPerformed
 
-    private void selIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selIdActionPerformed
+    private void filterInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_selIdActionPerformed
+    }//GEN-LAST:event_filterInputActionPerformed
 
     private void filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterActionPerformed
         
         
-        if (selId.getText().trim().isEmpty() && selName.getText().trim().isEmpty() && selStat.getSelectedItem().trim().isEmpty()) {
+        if (filterInput.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Input At Least One", "Error", JOptionPane.ERROR_MESSAGE);
+            updateTable();
             return;
-        } else {
-            int ID = selId.getText().trim().isEmpty() ? 0 : Integer.parseInt(selId.getText().trim());
-            String NAME = selName.getText().trim();
-            String STAT = selStat.getSelectedItem().trim();
-            FilteredTable(ID, NAME, STAT);
+        } else if(filterType.getSelectedItem().toString().trim().equals("ID")){
+            int ID = Integer.parseInt(filterInput.getText().trim());
+            
+            FilteredTable(ID);
+        }else if(filterType.getSelectedItem().toString().trim().equals("Name")){
+            String name = filterInput.getText().trim();
+            
+            FilteredTable(name);
+        }else if(filterType.getSelectedItem().toString().trim().equals("Status")){
+            String status = filterInput.getText().trim();
+            
+            FilteredTableString(status);
         }
         
         
@@ -441,18 +528,16 @@ public class searchUser extends javax.swing.JFrame {
     private javax.swing.JButton dash;
     private javax.swing.JButton dataBtn;
     private javax.swing.JButton filter;
+    private javax.swing.JTextField filterInput;
+    private java.awt.Choice filterType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout;
     private javax.swing.JTable mainTable;
     private javax.swing.JPanel pfpContainer;
     private javax.swing.JButton searchBtn;
-    private javax.swing.JTextField selId;
-    private javax.swing.JTextField selName;
-    private java.awt.Choice selStat;
     private javax.swing.JButton settingsBtn;
     // End of variables declaration//GEN-END:variables
 }                  

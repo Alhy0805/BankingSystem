@@ -68,10 +68,13 @@ public class adminDashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         dash = new javax.swing.JButton();
         logout = new javax.swing.JButton();
-        dataBtn = new javax.swing.JButton();
+        transactionBtn = new javax.swing.JButton();
         pfpContainer = new javax.swing.JPanel();
         settingsBtn = new javax.swing.JButton();
         searchBtn1 = new javax.swing.JButton();
+        searchBtn2 = new javax.swing.JButton();
+        searchBtn3 = new javax.swing.JButton();
+        searchBtn4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         depositLbl = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -129,13 +132,13 @@ public class adminDashboard extends javax.swing.JFrame {
         logout.setText("Logout");
         logout.setPreferredSize(new java.awt.Dimension(75, 35));
 
-        dataBtn.setBackground(new java.awt.Color(255, 196, 196));
-        dataBtn.setForeground(new java.awt.Color(133, 14, 53));
-        dataBtn.setText("Data");
-        dataBtn.setPreferredSize(new java.awt.Dimension(75, 35));
-        dataBtn.addActionListener(new java.awt.event.ActionListener() {
+        transactionBtn.setBackground(new java.awt.Color(255, 196, 196));
+        transactionBtn.setForeground(new java.awt.Color(133, 14, 53));
+        transactionBtn.setText("Transaction History");
+        transactionBtn.setPreferredSize(new java.awt.Dimension(75, 35));
+        transactionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataBtnActionPerformed(evt);
+                transactionBtnActionPerformed(evt);
             }
         });
 
@@ -151,7 +154,7 @@ public class adminDashboard extends javax.swing.JFrame {
         );
         pfpContainerLayout.setVerticalGroup(
             pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 68, Short.MAX_VALUE)
+            .addGap(0, 63, Short.MAX_VALUE)
         );
 
         settingsBtn.setBackground(new java.awt.Color(255, 196, 196));
@@ -161,11 +164,41 @@ public class adminDashboard extends javax.swing.JFrame {
 
         searchBtn1.setBackground(new java.awt.Color(255, 196, 196));
         searchBtn1.setForeground(new java.awt.Color(133, 14, 53));
-        searchBtn1.setText("Accounts");
+        searchBtn1.setText("Capital");
         searchBtn1.setPreferredSize(new java.awt.Dimension(72, 35));
         searchBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtn1ActionPerformed(evt);
+            }
+        });
+
+        searchBtn2.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn2.setForeground(new java.awt.Color(133, 14, 53));
+        searchBtn2.setText("Accounts");
+        searchBtn2.setPreferredSize(new java.awt.Dimension(72, 35));
+        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn2ActionPerformed(evt);
+            }
+        });
+
+        searchBtn3.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn3.setForeground(new java.awt.Color(133, 14, 53));
+        searchBtn3.setText("Active Loans");
+        searchBtn3.setPreferredSize(new java.awt.Dimension(72, 35));
+        searchBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn3ActionPerformed(evt);
+            }
+        });
+
+        searchBtn4.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn4.setForeground(new java.awt.Color(133, 14, 53));
+        searchBtn4.setText("Withdrawals");
+        searchBtn4.setPreferredSize(new java.awt.Dimension(72, 35));
+        searchBtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn4ActionPerformed(evt);
             }
         });
 
@@ -176,11 +209,14 @@ public class adminDashboard extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(dash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dataBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transactionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(searchBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -196,10 +232,16 @@ public class adminDashboard extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(dash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(transactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(searchBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(253, 253, 253)
+                .addComponent(searchBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118)
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -675,12 +717,12 @@ public class adminDashboard extends javax.swing.JFrame {
         dash.setVisible(true);
     }//GEN-LAST:event_dashActionPerformed
 
-    private void dataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBtnActionPerformed
-       adminData data = new adminData();
-       data.setLocationRelativeTo(null);
-       data.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_dataBtnActionPerformed
+    private void transactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtnActionPerformed
+        transaction transact =  new transaction(accId);
+        this.setVisible(false);
+        this.dispose();
+        transact.setVisible(true);
+    }//GEN-LAST:event_transactionBtnActionPerformed
 
     private void capValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capValActionPerformed
 
@@ -712,6 +754,18 @@ public class adminDashboard extends javax.swing.JFrame {
         this.dispose();
         user.setVisible(true);
     }//GEN-LAST:event_searchBtn1ActionPerformed
+
+    private void searchBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn2ActionPerformed
+
+    private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn3ActionPerformed
+
+    private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtn4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -752,7 +806,6 @@ public class adminDashboard extends javax.swing.JFrame {
     private javax.swing.JTextField acUserVal;
     private javax.swing.JTextField capVal;
     private javax.swing.JButton dash;
-    private javax.swing.JButton dataBtn;
     private javax.swing.JTextField deacVal;
     private javax.swing.JLabel depositLbl;
     private javax.swing.JLabel jLabel10;
@@ -783,7 +836,11 @@ public class adminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel pfpContainer;
     private javax.swing.JTextField revVal;
     private javax.swing.JButton searchBtn1;
+    private javax.swing.JButton searchBtn2;
+    private javax.swing.JButton searchBtn3;
+    private javax.swing.JButton searchBtn4;
     private javax.swing.JButton settingsBtn;
+    private javax.swing.JButton transactionBtn;
     private javax.swing.JLabel widthrawal;
     private javax.swing.JTextField withVal;
     // End of variables declaration//GEN-END:variables

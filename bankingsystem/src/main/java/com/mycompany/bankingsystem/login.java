@@ -1,6 +1,7 @@
 
 package com.mycompany.bankingsystem;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class login extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(login.class.getName());
@@ -123,9 +124,11 @@ public class login extends javax.swing.JFrame {
         String idTxt = idIn.getText().trim();
         String pinTxt = new String(pinIn.getPassword()).trim();
 
-        // 1. Initial Validation
         if (idTxt.isEmpty() || pinTxt.isEmpty()) {
             ErrorManager.showError((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this), 3);
+            return;
+        }else if (pinTxt.length()>6 ||  pinTxt.length()== 0) {
+            JOptionPane.showMessageDialog(null,"INPUT 6 PIN","Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
 
