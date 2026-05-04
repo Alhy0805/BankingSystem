@@ -73,6 +73,7 @@ public class transfer extends javax.swing.JFrame {
         Tid = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Tamount = new javax.swing.JTextField();
+        diana = new javax.swing.JButton();
 
         confirmBtn1.setBackground(new java.awt.Color(238, 105, 131));
         confirmBtn1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
@@ -361,7 +362,7 @@ public class transfer extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,18 +372,34 @@ public class transfer extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        diana.setBackground(new java.awt.Color(255, 196, 196));
+        diana.setForeground(new java.awt.Color(133, 14, 53));
+        diana.setText("Ask Diana?");
+        diana.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        diana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dianaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(326, 326, 326)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(2, 2, 2)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 803, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(326, 326, 326)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(diana)
+                        .addContainerGap())))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,6 +407,8 @@ public class transfer extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(diana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
@@ -433,11 +452,12 @@ public class transfer extends javax.swing.JFrame {
     }//GEN-LAST:event_transacActionPerformed
 
     private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
-        // TODO add your handling code here:
+        Setting set = new Setting(accId,aiFrame,posit);
+        transition.switchFrame(this,set);
     }//GEN-LAST:event_settingsActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
+        new logout(this).setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
 
     private void TidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TidActionPerformed
@@ -477,6 +497,10 @@ public class transfer extends javax.swing.JFrame {
         udashboard dashboard = new udashboard(accId,aiFrame,posit);
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
+
+    private void dianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dianaActionPerformed
+        new AiUi(accId, true, this,posit);
+    }//GEN-LAST:event_dianaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -522,6 +546,7 @@ public class transfer extends javax.swing.JFrame {
     private javax.swing.JButton confirmBtn2;
     private javax.swing.JButton dashboard;
     private javax.swing.JButton deposit;
+    private javax.swing.JButton diana;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

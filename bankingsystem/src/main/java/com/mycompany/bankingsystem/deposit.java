@@ -79,6 +79,7 @@ public class deposit extends javax.swing.JFrame  {
         deposit = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        diana = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -383,6 +384,16 @@ public class deposit extends javax.swing.JFrame  {
                 .addGap(90, 90, 90))
         );
 
+        diana.setBackground(new java.awt.Color(255, 196, 196));
+        diana.setForeground(new java.awt.Color(133, 14, 53));
+        diana.setText("Ask Diana?");
+        diana.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        diana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dianaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -395,7 +406,9 @@ public class deposit extends javax.swing.JFrame  {
                         .addComponent(jLabel1)
                         .addGap(371, 371, 371))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(diana)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32))))
         );
         mainPanelLayout.setVerticalGroup(
@@ -403,7 +416,9 @@ public class deposit extends javax.swing.JFrame  {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(diana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
@@ -423,11 +438,12 @@ public class deposit extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
+        new logout(this).setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
 
     private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
-        // TODO add your handling code here:
+        Setting set = new Setting(accId,aiFrame,posit);
+        transition.switchFrame(this,set);
     }//GEN-LAST:event_settingsActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
@@ -485,6 +501,10 @@ public class deposit extends javax.swing.JFrame  {
         transition.switchFrame(this,dashboard);
     }//GEN-LAST:event_dashboardActionPerformed
 
+    private void dianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dianaActionPerformed
+        new AiUi(accId, true, this,posit);
+    }//GEN-LAST:event_dianaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -504,6 +524,7 @@ public class deposit extends javax.swing.JFrame  {
     private javax.swing.JButton dashboard;
     private javax.swing.JTextField deposit;
     private javax.swing.JButton depositTab;
+    private javax.swing.JButton diana;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

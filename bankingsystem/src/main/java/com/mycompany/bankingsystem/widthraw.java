@@ -75,6 +75,7 @@ public class widthraw extends javax.swing.JFrame {
         amount = new javax.swing.JTextField();
         savings1 = new javax.swing.JButton();
         cash = new javax.swing.JButton();
+        diana = new javax.swing.JButton();
 
         confirmBtn1.setBackground(new java.awt.Color(238, 105, 131));
         confirmBtn1.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
@@ -401,6 +402,16 @@ public class widthraw extends javax.swing.JFrame {
                 .addGap(90, 90, 90))
         );
 
+        diana.setBackground(new java.awt.Color(255, 196, 196));
+        diana.setForeground(new java.awt.Color(133, 14, 53));
+        diana.setText("Ask Diana?");
+        diana.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        diana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dianaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -409,19 +420,27 @@ public class widthraw extends javax.swing.JFrame {
                 .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(328, 328, 328)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(328, 328, 328)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(diana)))
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(diana)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
@@ -466,11 +485,12 @@ public class widthraw extends javax.swing.JFrame {
     }//GEN-LAST:event_transacActionPerformed
 
     private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
-        // TODO add your handling code here:
+        Setting set = new Setting(accId,aiFrame,posit);
+        transition.switchFrame(this,set);
     }//GEN-LAST:event_settingsActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
+        new logout(this).setVisible(true);
     }//GEN-LAST:event_logoutActionPerformed
 
     private void savings1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savings1ActionPerformed
@@ -521,6 +541,13 @@ public class widthraw extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_amountActionPerformed
 
+    private void dianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dianaActionPerformed
+
+        // hide main dashboard
+        new AiUi(accId, true, this,posit);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dianaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -565,6 +592,7 @@ public class widthraw extends javax.swing.JFrame {
     private javax.swing.JButton confirmBtn2;
     private javax.swing.JButton dashboard;
     private javax.swing.JButton deposit;
+    private javax.swing.JButton diana;
     private javax.swing.JTextField ecashNum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

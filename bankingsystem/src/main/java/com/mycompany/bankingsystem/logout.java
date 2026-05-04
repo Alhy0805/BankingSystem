@@ -10,6 +10,7 @@ public class logout extends javax.swing.JFrame {
     private JFrame parentFrameUser; // store it here
 
     public logout(JFrame parentFrame) {
+        setUndecorated(true);
         initComponents();
         parentFrameUser = parentFrame; // save the reference
         setLocationRelativeTo(parentFrame);

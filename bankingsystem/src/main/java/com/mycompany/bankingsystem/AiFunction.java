@@ -15,15 +15,15 @@ public class AiFunction {
 
             case "addUser": {
                 String name = getString(p, "name");
-                double sBal = getDouble(p, "sbal");
-                double psBal = Math.abs(sBal);
-                double lBal = getDouble(p, "lbal");
-                double plBal = Math.abs(lBal);
-                String stat = getString(p, "status");
-                String pos = getString(p, "position");
+                int age = getInt(p, "age");
+                String address = getString(p, "address");
+                String phone_number = getString(p, "phone_number");
                 int pin = getInt(p, "pin");
+                String position = "user";
+                String sex = getString(p, "sex");
+                String status = "active";
 
-                databaseLogic.addUser(name, psBal, plBal, stat, pos, pin, ui);
+                databaseLogic.addUser(name, age, address, phone_number, pin, position, sex, status, ui);
                 System.out.println("ADD USER EXECUTED");
                 break;
             }

@@ -61,8 +61,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="aboutUsBtn" max="32767" attributes="0"/>
                       <Component id="cPinBtn" max="32767" attributes="0"/>
-                      <Component id="jLabel2" max="32767" attributes="0"/>
-                      <Component id="CCMBtn" pref="199" max="32767" attributes="0"/>
+                      <Component id="jLabel2" pref="199" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="119" max="32767" attributes="0"/>
               </Group>
@@ -76,13 +75,11 @@
                       <Component id="jLabel2" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="backBtn" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="CCMBtn" min="-2" pref="39" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   <Component id="cPinBtn" min="-2" pref="39" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="aboutUsBtn" min="-2" pref="39" max="-2" attributes="0"/>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <EmptySpace pref="94" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,20 +105,6 @@
               <Dimension value="[119, 31]"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="CCMBtn">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="a6" green="a6" red="ff" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Microsoft Sans Serif" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Change Color Mode"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CCMBtnActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="cPinBtn">
           <Properties>

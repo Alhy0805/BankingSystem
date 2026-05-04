@@ -27,7 +27,7 @@ public class OllamaService {
 
         + "VALID ACTIONS:\n"
 
-        + "1. addUser -> {\"name\": string, \"sbal\": double, \"lbal\": double, \"status\": string, \"position\": string, \"pin\": int}\n"
+        + "1. addUser -> {\"name\": string, \"age\": int, \"address\": string, \"phone_number\": string, \"pin\": int, \"sex\": string}\n"
         + "   Description: Create a new user with name, savings balance, loan balance, status, role, and PIN.\n"
 
         + "2. updateUserName -> {\"id\": int, \"name\": string}\n"
@@ -109,7 +109,7 @@ public class OllamaService {
 
         // ✅ SAFE JSON BUILDING (NO MANUAL ESCAPING)
         JsonObject body = new JsonObject();
-        body.addProperty("model", "llama3");
+        body.addProperty("model", "Phi3");
         body.addProperty("prompt", prompt);
         body.addProperty("stream", false);
 
