@@ -55,8 +55,18 @@ public class cdb {
             pstmt.setDouble(1,oldSavings + newSavings);
             pstmt.setInt(2,accID);
             
-            int rowsAffected = pstmt.executeUpdate();
-            if(rowsAffected>0){
+            pstmt.executeUpdate();
+            
+            String sqlTransact = "INSERT INTO transactions(transacId,accId,amount,transacType,transactTo) VALUES(null, ?, ?, ?,?)";
+            PreparedStatement pstmtTransact = conn.prepareStatement(sqlTransact);
+            pstmtTransact.setInt(1,accID);
+            pstmtTransact.setDouble(2,newSavings);
+            pstmtTransact.setString(3,"Deposit");
+            pstmtTransact.setString(4,"Cash");
+            
+            
+            int rowsAffectedTransact = pstmtTransact.executeUpdate();
+            if(rowsAffectedTransact>0){
                 JOptionPane.showMessageDialog(null,"DEPOSIT SUCCESSFUL");
             }
             
@@ -66,7 +76,7 @@ public class cdb {
         
   
     }
-    public void setSavingsWithdraw(int accID,double newSavings) {
+    public void setSavingsWithdrawEcash(int accID,double newSavings) {
         double oldSavings = 0.0;
         
 
@@ -81,7 +91,67 @@ public class cdb {
                     oldSavings = savings;
                 }
             }
+            String sqlTransact = "INSERT INTO transactions(transacId,accId,amount,transacType,transactTo) VALUES(null, ?, ?, ?,?)";
+            PreparedStatement pstmtTransact = conn.prepareStatement(sqlTransact);
+            pstmtTransact.setInt(1,accID);
+            pstmtTransact.setDouble(2,newSavings);
+            pstmtTransact.setString(3,"Withdraw");
+            pstmtTransact.setString(4,"E-Cash");
+            pstmtTransact.executeUpdate();
             
+            
+            
+            String sql = "update bankingAccounts set sBalance = ? where accId=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            if(oldSavings >= newSavings){
+                if(newSavings <= 0){
+                JOptionPane.showMessageDialog(null,"INVALID AMOUNT");
+                }else{
+                    pstmt.setDouble(1,oldSavings - newSavings);
+                    pstmt.setInt(2,accID); 
+                
+                    int rowsAffected = pstmt.executeUpdate();
+                    if(rowsAffected>0){
+                        JOptionPane.showMessageDialog(null,"WITHDRAW SUCCESSFUL");
+                    }
+                }
+                
+            }else{
+                JOptionPane.showMessageDialog(null,"INVALID AMOUNT");
+            }
+            
+            
+            
+            
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+  
+    }
+    public void setSavingsWithdrawCash(int accID,double newSavings) {
+        double oldSavings = 0.0;
+        
+
+        try(Connection conn = dbconn.connect()){
+            String old = "select* from bankingAccounts";
+            PreparedStatement stmt = conn.prepareStatement(old);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("accId");
+                double savings = rs.getDouble("sBalance");
+                if(accID == id){
+                    oldSavings = savings;
+                }
+            }
+            String sqlTransact = "INSERT INTO transactions(transacId,accId,amount,transacType,transactTo) VALUES(null, ?, ?, ?,?)";
+            PreparedStatement pstmtTransact = conn.prepareStatement(sqlTransact);
+            pstmtTransact.setInt(1,accID);
+            pstmtTransact.setDouble(2,newSavings);
+            pstmtTransact.setString(3,"Withdraw");
+            pstmtTransact.setString(4,"Cash");
+            pstmtTransact.executeUpdate();
             
             
             
@@ -131,6 +201,13 @@ public class cdb {
                     oldSavings1 = savings;
                 }
             }
+            String sqlTransact = "INSERT INTO transactions(transacId,accId,amount,transacType,transactTo) VALUES(null, ?, ?, ?,?)";
+            PreparedStatement pstmtTransact = conn.prepareStatement(sqlTransact);
+            pstmtTransact.setInt(1,userId);
+            pstmtTransact.setDouble(2,amount);
+            pstmtTransact.setString(3,"Transfer");
+            pstmtTransact.setInt(4,accID);
+            pstmtTransact.executeUpdate();
             
             String sql1 = "update bankingAccounts set sBalance = ? where accId=?";
             PreparedStatement pstmt1 = conn.prepareStatement(sql1);
@@ -322,6 +399,7 @@ public class cdb {
                     e.printStackTrace();
                 }
             }
+            
             // Success with a title and info icon
             JOptionPane.showMessageDialog(null, "Sign up successfully!\n Account ID: "+accId, "Success", JOptionPane.INFORMATION_MESSAGE);
     }

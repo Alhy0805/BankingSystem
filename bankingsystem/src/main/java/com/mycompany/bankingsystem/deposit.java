@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.bankingsystem;
+import static com.mycompany.bankingsystem.udashboard.accId;
+import static com.mycompany.bankingsystem.udashboard.posit;
 import javax.swing.*;
 import java.awt.*;
 
@@ -32,8 +34,10 @@ public class deposit extends javax.swing.JFrame  {
         pfpContainer.repaint();
     }
     public deposit(int id,String pos) {
+        setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
+        
         setVisible(true);
         profile pfp = new profile();
         pfp.setPreferredSize(new Dimension(100, 100));
@@ -431,7 +435,8 @@ public class deposit extends javax.swing.JFrame  {
     }//GEN-LAST:event_settingsActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
-        // TODO add your handling code here:
+        transactionUser user = new transactionUser(accId,posit);
+        transition.switchFrame(this,user);
     }//GEN-LAST:event_transacActionPerformed
 
     private void loanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanActionPerformed

@@ -749,14 +749,15 @@ public class adminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_loanValActionPerformed
 
     private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
+        
+    }//GEN-LAST:event_searchBtn1ActionPerformed
+
+    private void searchBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn2ActionPerformed
         searchUser user =  new searchUser(accId);
         this.setVisible(false);
         this.dispose();
         user.setVisible(true);
-    }//GEN-LAST:event_searchBtn1ActionPerformed
-
-    private void searchBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_searchBtn2ActionPerformed
 
     private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed

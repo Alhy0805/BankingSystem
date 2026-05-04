@@ -4,6 +4,8 @@
  */
 package com.mycompany.bankingsystem;
 
+import static com.mycompany.bankingsystem.udashboard.accId;
+import static com.mycompany.bankingsystem.udashboard.posit;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -22,6 +24,7 @@ public class transfer extends javax.swing.JFrame {
         setVisible(true);
     }
     public transfer(int id,String pos) {
+        setUndecorated(true);
         initComponents();
         setVisible(true);
         accId = id;        
@@ -429,7 +432,8 @@ public class transfer extends javax.swing.JFrame {
     }//GEN-LAST:event_loanActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
-        // TODO add your handling code here:
+        transactionUser user = new transactionUser(accId,posit);
+        transition.switchFrame(this,user);
     }//GEN-LAST:event_transacActionPerformed
 
     private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
