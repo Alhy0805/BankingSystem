@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class AiUi extends javax.swing.JFrame {
     public static int accId;
     boolean aiFrame;
-    udashboard parent;
+    javax.swing.JFrame parent;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AiUi.class.getName());
 
     //temporary user
@@ -43,7 +43,7 @@ public class AiUi extends javax.swing.JFrame {
         setVisible(true);
         aiFrame = ai;
     }
-    public AiUi(int id, boolean ai, udashboard parentFrame) {
+    public AiUi(int id, boolean ai, javax.swing.JFrame parentFrame) {
         initComponents();
         this.parent = parentFrame;
         accId = id;
@@ -52,7 +52,8 @@ public class AiUi extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    public AiUi(int id, boolean ai, udashboard parentFrame,String pos) {
+    public AiUi(int id, boolean ai, javax.swing.JFrame parentFrame,String pos) {
+        setUndecorated(true);
         initComponents();
         this.parent = parentFrame;
         accId = id;

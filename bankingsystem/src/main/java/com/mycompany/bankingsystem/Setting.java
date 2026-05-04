@@ -47,7 +47,6 @@ public class Setting extends javax.swing.JFrame {
         buttonGroup3 = new javax.swing.ButtonGroup();
         SettingPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        CCMBtn = new javax.swing.JButton();
         cPinBtn = new javax.swing.JButton();
         aboutUsBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
@@ -64,11 +63,6 @@ public class Setting extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(119, 31));
         jLabel2.setMinimumSize(new java.awt.Dimension(119, 31));
         jLabel2.setPreferredSize(new java.awt.Dimension(119, 31));
-
-        CCMBtn.setBackground(new java.awt.Color(255, 166, 166));
-        CCMBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
-        CCMBtn.setText("Change Color Mode");
-        CCMBtn.addActionListener(this::CCMBtnActionPerformed);
 
         cPinBtn.setBackground(new java.awt.Color(255, 166, 166));
         cPinBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 14)); // NOI18N
@@ -96,8 +90,7 @@ public class Setting extends javax.swing.JFrame {
                 .addGroup(SettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(aboutUsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cPinBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CCMBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
         SettingPanelLayout.setVerticalGroup(
@@ -107,13 +100,11 @@ public class Setting extends javax.swing.JFrame {
                 .addGroup(SettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backBtn))
-                .addGap(53, 53, 53)
-                .addComponent(CCMBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(65, 65, 65)
                 .addComponent(cPinBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addComponent(aboutUsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,10 +120,6 @@ public class Setting extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void CCMBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCMBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CCMBtnActionPerformed
 
     private void cPinBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPinBtnActionPerformed
         ChangePIn pin = new ChangePIn(accId);
@@ -176,7 +163,6 @@ public class Setting extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CCMBtn;
     private javax.swing.JPanel SettingPanel;
     private javax.swing.JButton aboutUsBtn;
     private javax.swing.JButton backBtn;

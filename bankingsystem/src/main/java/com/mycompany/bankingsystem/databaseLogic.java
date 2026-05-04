@@ -163,27 +163,62 @@ public class databaseLogic {
     }
 
     //adding user
-    public static void addUser(String name, double sBal, double lBal, String stat, String pos, int pin, AiUi ui) {
+    public static void addUser(String name, int age, String address, String phone, int pin, String pos, String sex, String status, AiUi ui) {
+        int accId = 0;
         if (AiUi.posit.equalsIgnoreCase("Admin")) {
-            String sql = "INSERT INTO bankingaccounts VALUES (NULL, ?, ?, ?, ?, ?, ?)";
-            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to add this user?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the status of this user?", "Confirmation", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
-                try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                String sqlSetMaintable = "INSERT INTO bankingaccounts (fullName,position,pin,status) VALUES (?, ?, ?,?)";
+                try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sqlSetMaintable)) {
 
                     stmt.setString(1, name);
-                    stmt.setDouble(2, sBal);
-                    stmt.setDouble(3, lBal);
-                    stmt.setString(4, stat);
-                    stmt.setString(5, pos);
-                    stmt.setInt(6, pin);
+                    stmt.setString(2, pos);
+                    stmt.setInt(3, pin);
+                    stmt.setString(4, status);
 
                     stmt.executeUpdate();
-
-                    ui.appendChatBox("\nAI: Data Added");
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String sqlGetAccId = "SELECT accId FROM bankingaccounts WHERE fullname = ?";
+
+                try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sqlGetAccId)) {
+
+                    stmt.setString(1, name);
+
+                    ResultSet rs = stmt.executeQuery();
+
+                    if (rs.next()) {
+                        accId = rs.getInt("accId");
+
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                String sqlSetChildtable = "INSERT INTO users (full_name,age,address,phone_number,sex,acc_id) VALUES (?, ?, ?, ?,?,?)";
+                int confirms = JOptionPane.showConfirmDialog(null, "Are you sure your informations are correct?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                if (confirms == JOptionPane.YES_OPTION) {
+                    try (Connection conn = dbconn.connect(); PreparedStatement stmt = conn.prepareStatement(sqlSetChildtable)) {
+
+                        stmt.setString(1, name);
+                        stmt.setInt(2, age);
+                        stmt.setString(3, address);
+                        stmt.setString(4, phone);
+                        stmt.setString(5, sex);
+                        stmt.setInt(6, accId);
+
+                        stmt.executeUpdate();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                // Success with a title and info icon
+                ui.appendChatBox("\nAI: Account successfully created");
             } else {
                 ui.appendChatBox("\nAI: Operation Cancelled");
             }
@@ -348,32 +383,32 @@ public class databaseLogic {
         double oldSavings = 0.0;
         int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to deposit this money?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
-        try (Connection conn = dbconn.connect()) {
-            String old = "select* from bankingAccounts";
-            PreparedStatement stmt = conn.prepareStatement(old);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("accId");
-                double savings = rs.getDouble("sBalance");
-                if (accID == id) {
-                    oldSavings = savings;
+            try (Connection conn = dbconn.connect()) {
+                String old = "select* from bankingAccounts";
+                PreparedStatement stmt = conn.prepareStatement(old);
+                ResultSet rs = stmt.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt("accId");
+                    double savings = rs.getDouble("sBalance");
+                    if (accID == id) {
+                        oldSavings = savings;
+                    }
                 }
+
+                String sql = "update bankingAccounts set sBalance = ? where accId=?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setDouble(1, oldSavings + newSavings);
+                pstmt.setInt(2, accID);
+
+                int rowsAffected = pstmt.executeUpdate();
+                if (rowsAffected > 0) {
+                    ui.appendChatBox("\nAI: Deposit Successfull");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-
-            String sql = "update bankingAccounts set sBalance = ? where accId=?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setDouble(1, oldSavings + newSavings);
-            pstmt.setInt(2, accID);
-
-            int rowsAffected = pstmt.executeUpdate();
-            if (rowsAffected > 0) {
-                ui.appendChatBox("\nAI: Deposit Successfull");
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-} else {
+        } else {
             ui.appendChatBox("\nAI: Operation Cancelled");
         }
     }
@@ -384,40 +419,40 @@ public class databaseLogic {
         int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to withdraw this money?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
 
-        try (Connection conn = dbconn.connect()) {
-            String old = "select* from bankingAccounts";
-            PreparedStatement stmt = conn.prepareStatement(old);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("accId");
-                double savings = rs.getDouble("sBalance");
-                if (accID == id) {
-                    oldSavings = savings;
-                }
-            }
-
-            String sql = "update bankingAccounts set sBalance = ? where accId=?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            if (oldSavings >= newSavings) {
-                if (newSavings <= 0) {
-                   ui.appendChatBox("\nAI: Invalid Amount");
-                } else {
-                    pstmt.setDouble(1, oldSavings - newSavings);
-                    pstmt.setInt(2, accID);
-
-                    int rowsAffected = pstmt.executeUpdate();
-                    if (rowsAffected > 0) {
-                        ui.appendChatBox("\nAI: Withdraw successfull");
+            try (Connection conn = dbconn.connect()) {
+                String old = "select* from bankingAccounts";
+                PreparedStatement stmt = conn.prepareStatement(old);
+                ResultSet rs = stmt.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt("accId");
+                    double savings = rs.getDouble("sBalance");
+                    if (accID == id) {
+                        oldSavings = savings;
                     }
                 }
 
-            } else {
-                ui.appendChatBox("\nAI: Invalid Amount");
-            }
+                String sql = "update bankingAccounts set sBalance = ? where accId=?";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                if (oldSavings >= newSavings) {
+                    if (newSavings <= 0) {
+                        ui.appendChatBox("\nAI: Invalid Amount");
+                    } else {
+                        pstmt.setDouble(1, oldSavings - newSavings);
+                        pstmt.setInt(2, accID);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                        int rowsAffected = pstmt.executeUpdate();
+                        if (rowsAffected > 0) {
+                            ui.appendChatBox("\nAI: Withdraw successfull");
+                        }
+                    }
+
+                } else {
+                    ui.appendChatBox("\nAI: Invalid Amount");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } else {
             ui.appendChatBox("\nAI: Operation Cancelled");
         }
