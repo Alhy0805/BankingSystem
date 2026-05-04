@@ -4,6 +4,8 @@
  */
 package com.mycompany.bankingsystem;
 
+import static com.mycompany.bankingsystem.udashboard.accId;
+import static com.mycompany.bankingsystem.udashboard.posit;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
@@ -24,6 +26,7 @@ public class widthraw extends javax.swing.JFrame {
         setVisible(true);
     }
     public widthraw(int id,String pos) {
+        setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -481,7 +484,8 @@ public class widthraw extends javax.swing.JFrame {
     }//GEN-LAST:event_loanActionPerformed
 
     private void transacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transacActionPerformed
-        // TODO add your handling code here:
+        transactionUser user = new transactionUser(accId,posit);
+        transition.switchFrame(this,user);
     }//GEN-LAST:event_transacActionPerformed
 
     private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
@@ -516,7 +520,7 @@ public class widthraw extends javax.swing.JFrame {
        }else{
            try{
                double newSavings = Double.parseDouble(Wsavings.trim());
-                db.setSavingsWithdraw(accId, newSavings);
+                db.setSavingsWithdrawEcash(accId, newSavings);
                 ecashNum.setText("");
                 amount.setText("0.00");
            }catch(NumberFormatException e){           

@@ -774,6 +774,7 @@ public class adminDashboard extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
         user.setVisible(true);
+        
     }//GEN-LAST:event_searchBtn2ActionPerformed
 
     private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
