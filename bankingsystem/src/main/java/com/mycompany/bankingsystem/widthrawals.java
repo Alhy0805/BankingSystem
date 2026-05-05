@@ -18,25 +18,26 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Student
+ * @author ASUS
  */
-public class searchUser extends javax.swing.JFrame {
+public class widthrawals extends javax.swing.JFrame {
     int accId;
     String position;
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(widthrawals.class.getName());
+
     /**
-     * Creates new form searchUser
+     * 
+     * Creates new form widthrawals
      */
-    public searchUser() {
+    public widthrawals() {
         initComponents();
-        
         setLocationRelativeTo(null);
     }
-    public searchUser(int id) {
+    
+    public widthrawals(int id) {
         initComponents();
-        
-        setLocationRelativeTo(null);
         accId = id;
-        
+        setLocationRelativeTo(null);
         profile pfp = new profile();
         pfp.setPreferredSize(new Dimension(100, 100));
     
@@ -48,15 +49,6 @@ public class searchUser extends javax.swing.JFrame {
     
         pfpContainer.revalidate();
         pfpContainer.repaint();
-        
-        filterType.add("ID");
-        filterType.add("Name");
-        filterType.add("Status");
-
-        
-    
-        
-        updateTable();
     }
     private void updateTable(){
         
@@ -235,37 +227,36 @@ public class searchUser extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         diana = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        widthrawals = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 538));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 245, 238));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 500));
 
         dash.setBackground(new java.awt.Color(255, 196, 196));
+        dash.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         dash.setForeground(new java.awt.Color(133, 14, 53));
         dash.setText("Dashboard");
         dash.setPreferredSize(new java.awt.Dimension(72, 35));
-        dash.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dashActionPerformed(evt);
-            }
-        });
+        dash.addActionListener(this::dashActionPerformed);
 
         logout.setBackground(new java.awt.Color(255, 196, 196));
+        logout.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         logout.setForeground(new java.awt.Color(133, 14, 53));
         logout.setText("Logout");
         logout.setPreferredSize(new java.awt.Dimension(75, 35));
 
         transactionBtn.setBackground(new java.awt.Color(255, 196, 196));
+        transactionBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         transactionBtn.setForeground(new java.awt.Color(133, 14, 53));
         transactionBtn.setText("Transaction History");
         transactionBtn.setPreferredSize(new java.awt.Dimension(75, 35));
-        transactionBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionBtnActionPerformed(evt);
-            }
-        });
+        transactionBtn.addActionListener(this::transactionBtnActionPerformed);
 
         pfpContainer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Banko ni Negro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_BOTTOM, new java.awt.Font("Microsoft Sans Serif", 1, 18), new java.awt.Color(133, 14, 53))); // NOI18N
         pfpContainer.setForeground(new java.awt.Color(133, 14, 53));
@@ -283,66 +274,55 @@ public class searchUser extends javax.swing.JFrame {
         );
 
         settingsBtn.setBackground(new java.awt.Color(255, 196, 196));
+        settingsBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         settingsBtn.setForeground(new java.awt.Color(133, 14, 53));
         settingsBtn.setText("Settings");
         settingsBtn.setPreferredSize(new java.awt.Dimension(75, 35));
 
         searchBtn1.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         searchBtn1.setForeground(new java.awt.Color(133, 14, 53));
         searchBtn1.setText("Capital");
         searchBtn1.setPreferredSize(new java.awt.Dimension(72, 35));
-        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtn1ActionPerformed(evt);
-            }
-        });
+        searchBtn1.addActionListener(this::searchBtn1ActionPerformed);
 
-        searchBtn2.setBackground(new java.awt.Color(238, 105, 131));
+        searchBtn2.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         searchBtn2.setForeground(new java.awt.Color(133, 14, 53));
         searchBtn2.setText("Accounts");
         searchBtn2.setPreferredSize(new java.awt.Dimension(72, 35));
-        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtn2ActionPerformed(evt);
-            }
-        });
+        searchBtn2.addActionListener(this::searchBtn2ActionPerformed);
 
         searchBtn3.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         searchBtn3.setForeground(new java.awt.Color(133, 14, 53));
         searchBtn3.setText("Active Loans");
         searchBtn3.setPreferredSize(new java.awt.Dimension(72, 35));
-        searchBtn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtn3ActionPerformed(evt);
-            }
-        });
+        searchBtn3.addActionListener(this::searchBtn3ActionPerformed);
 
-        searchBtn4.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn4.setBackground(new java.awt.Color(238, 105, 131));
+        searchBtn4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
         searchBtn4.setForeground(new java.awt.Color(133, 14, 53));
         searchBtn4.setText("Withdrawals");
         searchBtn4.setPreferredSize(new java.awt.Dimension(72, 35));
-        searchBtn4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtn4ActionPerformed(evt);
-            }
-        });
+        searchBtn4.addActionListener(this::searchBtn4ActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(dash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transactionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchBtn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(settingsBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(settingsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(dash, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transactionBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pfpContainer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -358,9 +338,9 @@ public class searchUser extends javax.swing.JFrame {
                 .addComponent(transactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(searchBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(searchBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(searchBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(settingsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -375,6 +355,24 @@ public class searchUser extends javax.swing.JFrame {
         mainTable.setForeground(new java.awt.Color(133, 14, 53));
         mainTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -402,50 +400,43 @@ public class searchUser extends javax.swing.JFrame {
         mainTable.setGridColor(new java.awt.Color(133, 14, 53));
         mainTable.setShowGrid(true);
         jScrollPane1.setViewportView(mainTable);
-        if (mainTable.getColumnModel().getColumnCount() > 0) {
-            mainTable.getColumnModel().getColumn(0).setResizable(false);
-            mainTable.getColumnModel().getColumn(4).setResizable(false);
-        }
 
-        filterInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterInputActionPerformed(evt);
-            }
-        });
+        filterInput.addActionListener(this::filterInputActionPerformed);
 
         filter.setBackground(new java.awt.Color(255, 196, 196));
+        filter.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         filter.setText("Filter");
-        filter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterActionPerformed(evt);
-            }
-        });
+        filter.addActionListener(this::filterActionPerformed);
 
         jLabel1.setText("Filter Type");
 
         jLabel2.setText("Filter Data");
 
         diana.setBackground(new java.awt.Color(255, 196, 196));
+        diana.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
         diana.setForeground(new java.awt.Color(133, 14, 53));
         diana.setText("Ask Diana?");
         diana.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        diana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dianaActionPerformed(evt);
-            }
-        });
+        diana.addActionListener(this::dianaActionPerformed);
+
+        jLabel3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(133, 14, 53));
+        jLabel3.setText("Total Widthrawals");
+
+        widthrawals.setText("0.00");
+        widthrawals.addActionListener(this::widthrawalsActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(filterType, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
@@ -455,6 +446,10 @@ public class searchUser extends javax.swing.JFrame {
                                 .addComponent(filterInput, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(filter)
+                                .addGap(131, 131, 131)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(widthrawals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(diana))
                             .addGroup(layout.createSequentialGroup()
@@ -471,7 +466,7 @@ public class searchUser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 1, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel1)))
@@ -486,7 +481,9 @@ public class searchUser extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(filterInput, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(filter))))
+                            .addComponent(filter)
+                            .addComponent(jLabel3)
+                            .addComponent(widthrawals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
@@ -500,27 +497,25 @@ public class searchUser extends javax.swing.JFrame {
     }//GEN-LAST:event_filterInputActionPerformed
 
     private void filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterActionPerformed
-        
-        
+
         if (filterInput.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Input At Least One", "Error", JOptionPane.ERROR_MESSAGE);
             updateTable();
             return;
         } else if(filterType.getSelectedItem().toString().trim().equals("ID")){
             int ID = Integer.parseInt(filterInput.getText().trim());
-            
+
             FilteredTable(ID);
         }else if(filterType.getSelectedItem().toString().trim().equals("Name")){
             String name = filterInput.getText().trim();
-            
+
             FilteredTable(name);
         }else if(filterType.getSelectedItem().toString().trim().equals("Status")){
             String status = filterInput.getText().trim();
-            
+
             FilteredTableString(status);
         }
-        
-        
+
     }//GEN-LAST:event_filterActionPerformed
 
     private void dianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dianaActionPerformed
@@ -556,7 +551,6 @@ public class searchUser extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
         user.setVisible(true);
-
     }//GEN-LAST:event_searchBtn2ActionPerformed
 
     private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
@@ -568,10 +562,14 @@ public class searchUser extends javax.swing.JFrame {
 
     private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
         widthrawals widthrawals = new widthrawals(accId);
-       this.setVisible(false);
-       this.dispose();
+        this.setVisible(false);
+        this.dispose();
         widthrawals.setVisible(true);
     }//GEN-LAST:event_searchBtn4ActionPerformed
+
+    private void widthrawalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthrawalsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_widthrawalsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -589,24 +587,13 @@ public class searchUser extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(searchUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(searchUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(searchUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(searchUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new searchUser().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new widthrawals().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -617,6 +604,7 @@ public class searchUser extends javax.swing.JFrame {
     private java.awt.Choice filterType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout;
@@ -628,10 +616,6 @@ public class searchUser extends javax.swing.JFrame {
     private javax.swing.JButton searchBtn4;
     private javax.swing.JButton settingsBtn;
     private javax.swing.JButton transactionBtn;
+    private javax.swing.JTextField widthrawals;
     // End of variables declaration//GEN-END:variables
-}                  
-
-
-
-
-
+}

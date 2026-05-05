@@ -59,6 +59,7 @@ public class loan extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         buttonsPanel = new javax.swing.JPanel();
+        pfpContainer1 = new javax.swing.JPanel();
         deposit = new javax.swing.JButton();
         withdraw = new javax.swing.JButton();
         trasnfer = new javax.swing.JButton();
@@ -66,8 +67,6 @@ public class loan extends javax.swing.JFrame {
         transac = new javax.swing.JButton();
         settings = new javax.swing.JButton();
         logout = new javax.swing.JButton();
-        pfpContainer = new javax.swing.JPanel();
-        pfpContainer1 = new javax.swing.JPanel();
         savings3 = new javax.swing.JButton();
         dashboard = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -95,82 +94,6 @@ public class loan extends javax.swing.JFrame {
         buttonsPanel.setForeground(new java.awt.Color(252, 245, 238));
         buttonsPanel.setPreferredSize(new java.awt.Dimension(200, 500));
 
-        deposit.setBackground(new java.awt.Color(255, 196, 196));
-        deposit.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        deposit.setForeground(new java.awt.Color(133, 14, 53));
-        deposit.setText("Deposit");
-        deposit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depositActionPerformed(evt);
-            }
-        });
-
-        withdraw.setBackground(new java.awt.Color(255, 196, 196));
-        withdraw.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        withdraw.setForeground(new java.awt.Color(133, 14, 53));
-        withdraw.setText("Withdraw");
-        withdraw.setPreferredSize(new java.awt.Dimension(70, 35));
-        withdraw.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                withdrawActionPerformed(evt);
-            }
-        });
-
-        trasnfer.setBackground(new java.awt.Color(255, 196, 196));
-        trasnfer.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        trasnfer.setForeground(new java.awt.Color(133, 14, 53));
-        trasnfer.setText("Transfer");
-        trasnfer.setPreferredSize(new java.awt.Dimension(70, 35));
-        trasnfer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trasnferActionPerformed(evt);
-            }
-        });
-
-        loan.setBackground(new java.awt.Color(238, 105, 131));
-        loan.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        loan.setForeground(new java.awt.Color(133, 14, 53));
-        loan.setText("Loan");
-        loan.setPreferredSize(new java.awt.Dimension(70, 35));
-        loan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loanActionPerformed(evt);
-            }
-        });
-
-        transac.setBackground(new java.awt.Color(255, 196, 196));
-        transac.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        transac.setForeground(new java.awt.Color(133, 14, 53));
-        transac.setText("Transaction");
-        transac.setPreferredSize(new java.awt.Dimension(70, 35));
-        transac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transacActionPerformed(evt);
-            }
-        });
-
-        settings.setBackground(new java.awt.Color(255, 196, 196));
-        settings.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        settings.setForeground(new java.awt.Color(133, 14, 53));
-        settings.setText("Settings");
-        settings.setPreferredSize(new java.awt.Dimension(100, 35));
-        settings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                settingsActionPerformed(evt);
-            }
-        });
-
-        logout.setBackground(new java.awt.Color(255, 196, 196));
-        logout.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
-        logout.setForeground(new java.awt.Color(133, 14, 53));
-        logout.setText("Logout");
-        logout.setPreferredSize(new java.awt.Dimension(100, 35));
-        logout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutActionPerformed(evt);
-            }
-        });
-
         pfpContainer1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Banko ni Negro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.BELOW_BOTTOM, new java.awt.Font("Microsoft Sans Serif", 1, 18), new java.awt.Color(133, 14, 53))); // NOI18N
         pfpContainer1.setForeground(new java.awt.Color(133, 14, 53));
         pfpContainer1.setMaximumSize(new java.awt.Dimension(200, 200));
@@ -183,22 +106,88 @@ public class loan extends javax.swing.JFrame {
         );
         pfpContainer1Layout.setVerticalGroup(
             pfpContainer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 74, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout pfpContainerLayout = new javax.swing.GroupLayout(pfpContainer);
-        pfpContainer.setLayout(pfpContainerLayout);
-        pfpContainerLayout.setHorizontalGroup(
-            pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pfpContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        pfpContainerLayout.setVerticalGroup(
-            pfpContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pfpContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        deposit.setBackground(new java.awt.Color(255, 196, 196));
+        deposit.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        deposit.setForeground(new java.awt.Color(133, 14, 53));
+        deposit.setText("Deposit");
+        deposit.setPreferredSize(new java.awt.Dimension(70, 35));
+        deposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositActionPerformed(evt);
+            }
+        });
+
+        withdraw.setBackground(new java.awt.Color(255, 196, 196));
+        withdraw.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        withdraw.setForeground(new java.awt.Color(133, 14, 53));
+        withdraw.setText("Withdraw");
+        withdraw.setPreferredSize(new java.awt.Dimension(70, 35));
+        withdraw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withdrawActionPerformed(evt);
+            }
+        });
+
+        trasnfer.setBackground(new java.awt.Color(255, 196, 196));
+        trasnfer.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        trasnfer.setForeground(new java.awt.Color(133, 14, 53));
+        trasnfer.setText("Transfer");
+        trasnfer.setPreferredSize(new java.awt.Dimension(70, 35));
+        trasnfer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trasnferActionPerformed(evt);
+            }
+        });
+
+        loan.setBackground(new java.awt.Color(238, 105, 131));
+        loan.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        loan.setForeground(new java.awt.Color(133, 14, 53));
+        loan.setText("Loan");
+        loan.setPreferredSize(new java.awt.Dimension(70, 35));
+        loan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loanActionPerformed(evt);
+            }
+        });
+
+        transac.setBackground(new java.awt.Color(255, 196, 196));
+        transac.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        transac.setForeground(new java.awt.Color(133, 14, 53));
+        transac.setText("Transaction");
+        transac.setPreferredSize(new java.awt.Dimension(70, 35));
+        transac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transacActionPerformed(evt);
+            }
+        });
+
+        settings.setBackground(new java.awt.Color(255, 196, 196));
+        settings.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        settings.setForeground(new java.awt.Color(133, 14, 53));
+        settings.setText("Settings");
+        settings.setPreferredSize(new java.awt.Dimension(100, 35));
+        settings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                settingsActionPerformed(evt);
+            }
+        });
+
+        logout.setBackground(new java.awt.Color(255, 196, 196));
+        logout.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        logout.setForeground(new java.awt.Color(133, 14, 53));
+        logout.setText("Logout");
+        logout.setPreferredSize(new java.awt.Dimension(100, 35));
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
 
         savings3.setBackground(new java.awt.Color(255, 196, 196));
-        savings3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        savings3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         savings3.setForeground(new java.awt.Color(133, 14, 53));
         savings3.setText("Savings");
         savings3.setPreferredSize(new java.awt.Dimension(70, 35));
@@ -209,9 +198,10 @@ public class loan extends javax.swing.JFrame {
         });
 
         dashboard.setBackground(new java.awt.Color(255, 196, 196));
-        dashboard.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        dashboard.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         dashboard.setForeground(new java.awt.Color(133, 14, 53));
         dashboard.setText("Dashboard");
+        dashboard.setPreferredSize(new java.awt.Dimension(70, 35));
         dashboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dashboardActionPerformed(evt);
@@ -223,29 +213,26 @@ public class loan extends javax.swing.JFrame {
         buttonsPanelLayout.setHorizontalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(buttonsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(trasnfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(dashboard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                    .addComponent(transac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(savings3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(trasnfer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(withdraw, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deposit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dashboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 11, Short.MAX_VALUE))
+            .addComponent(pfpContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pfpContainer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40)
                 .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -337,14 +324,14 @@ public class loan extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
+                .addContainerGap(187, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(168, 168, 168))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90))
         );
@@ -366,16 +353,17 @@ public class loan extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(diana))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGap(330, 330, 330)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(diana, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)))
+                .addGap(0, 0, 0))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,9 +372,8 @@ public class loan extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(diana, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
 
@@ -394,7 +381,7 @@ public class loan extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1039, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,7 +506,6 @@ public class loan extends javax.swing.JFrame {
     private javax.swing.JButton loanConfirmBtn;
     private javax.swing.JButton logout;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JPanel pfpContainer;
     private javax.swing.JPanel pfpContainer1;
     private javax.swing.JTextField sLoan;
     private javax.swing.JButton savings3;

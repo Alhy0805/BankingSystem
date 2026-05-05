@@ -44,7 +44,15 @@ public class databaseLogic {
                     stmt.setInt(2, id);
 
                     stmt.executeUpdate();
-
+                    
+                    String sqlTransact = "INSERT INTO transactions(transacId,accId,amount,transacType,transactTo) VALUES(null, ?, ?, ?,?)";
+                    PreparedStatement pstmtTransact = conn.prepareStatement(sqlTransact);
+                    pstmtTransact.setInt(1,id);
+                    pstmtTransact.setDouble(2,sBal);
+                    pstmtTransact.setString(3,"Deposit");
+                    pstmtTransact.setString(4,"Cash");
+                    
+                    pstmtTransact.executeUpdate();
                     ui.appendChatBox("\nAI: Data Updated");
 
                 } catch (Exception e) {
@@ -394,6 +402,14 @@ public class databaseLogic {
                         oldSavings = savings;
                     }
                 }
+                 String sqlTransact = "INSERT INTO transactions(transacId,accId,amount,transacType,transactTo) VALUES(null, ?, ?, ?,?)";
+                    PreparedStatement pstmtTransact = conn.prepareStatement(sqlTransact);
+                    pstmtTransact.setInt(1,accID);
+                    pstmtTransact.setDouble(2,newSavings);
+                    pstmtTransact.setString(3,"Deposit");
+                    pstmtTransact.setString(4,"Cash");
+                    
+                    pstmtTransact.executeUpdate();
 
                 String sql = "update bankingAccounts set sBalance = ? where accId=?";
                 PreparedStatement pstmt = conn.prepareStatement(sql);

@@ -104,9 +104,10 @@ public class widthraw extends javax.swing.JFrame {
         buttonsPanel.setPreferredSize(new java.awt.Dimension(200, 500));
 
         deposit.setBackground(new java.awt.Color(255, 196, 196));
-        deposit.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        deposit.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         deposit.setForeground(new java.awt.Color(133, 14, 53));
         deposit.setText("Deposit");
+        deposit.setPreferredSize(new java.awt.Dimension(70, 35));
         deposit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 depositActionPerformed(evt);
@@ -114,7 +115,7 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         withdraw.setBackground(new java.awt.Color(238, 105, 131));
-        withdraw.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        withdraw.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         withdraw.setForeground(new java.awt.Color(133, 14, 53));
         withdraw.setText("Withdraw");
         withdraw.setPreferredSize(new java.awt.Dimension(70, 35));
@@ -125,7 +126,7 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         transfer.setBackground(new java.awt.Color(255, 196, 196));
-        transfer.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        transfer.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         transfer.setForeground(new java.awt.Color(133, 14, 53));
         transfer.setText("Transfer");
         transfer.setPreferredSize(new java.awt.Dimension(70, 35));
@@ -136,7 +137,7 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         loan.setBackground(new java.awt.Color(255, 196, 196));
-        loan.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        loan.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         loan.setForeground(new java.awt.Color(133, 14, 53));
         loan.setText("Loan");
         loan.setPreferredSize(new java.awt.Dimension(70, 35));
@@ -147,7 +148,7 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         transac.setBackground(new java.awt.Color(255, 196, 196));
-        transac.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        transac.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         transac.setForeground(new java.awt.Color(133, 14, 53));
         transac.setText("Transaction");
         transac.setPreferredSize(new java.awt.Dimension(70, 35));
@@ -158,7 +159,7 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         settings.setBackground(new java.awt.Color(255, 196, 196));
-        settings.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        settings.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         settings.setForeground(new java.awt.Color(133, 14, 53));
         settings.setText("Settings");
         settings.setPreferredSize(new java.awt.Dimension(100, 35));
@@ -169,7 +170,7 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         logout.setBackground(new java.awt.Color(255, 196, 196));
-        logout.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        logout.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         logout.setForeground(new java.awt.Color(133, 14, 53));
         logout.setText("Logout");
         logout.setPreferredSize(new java.awt.Dimension(100, 35));
@@ -180,7 +181,7 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         savings3.setBackground(new java.awt.Color(255, 196, 196));
-        savings3.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        savings3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         savings3.setForeground(new java.awt.Color(133, 14, 53));
         savings3.setText("Savings");
         savings3.setPreferredSize(new java.awt.Dimension(70, 35));
@@ -191,9 +192,10 @@ public class widthraw extends javax.swing.JFrame {
         });
 
         dashboard.setBackground(new java.awt.Color(255, 196, 196));
-        dashboard.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        dashboard.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         dashboard.setForeground(new java.awt.Color(133, 14, 53));
         dashboard.setText("Dashboard");
+        dashboard.setPreferredSize(new java.awt.Dimension(70, 35));
         dashboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dashboardActionPerformed(evt);
@@ -219,31 +221,28 @@ public class widthraw extends javax.swing.JFrame {
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(transac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(transfer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(withdraw, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(savings3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(dashboard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(transac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(savings3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transfer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(withdraw, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deposit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(buttonsPanelLayout.createSequentialGroup()
+                        .addComponent(settings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                .addGap(16, 16, 16))
         );
         buttonsPanelLayout.setVerticalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40)
+                .addGap(28, 28, 28)
                 .addComponent(dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,11 +384,11 @@ public class widthraw extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(savings1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(savings1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                     .addComponent(cash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(45, 45, 45)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(156, 156, 156))
+                .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,17 +423,17 @@ public class widthraw extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(diana))
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addGap(328, 328, 328)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(diana)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE))))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

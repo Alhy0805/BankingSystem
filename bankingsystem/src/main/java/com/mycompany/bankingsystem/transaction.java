@@ -219,12 +219,15 @@ public class transaction extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        searchBtn = new javax.swing.JButton();
-        settingsBtn = new javax.swing.JButton();
-        dataBtn = new javax.swing.JButton();
-        pfpContainer = new javax.swing.JPanel();
         dash = new javax.swing.JButton();
         logout = new javax.swing.JButton();
+        transactionBtn = new javax.swing.JButton();
+        pfpContainer = new javax.swing.JPanel();
+        settingsBtn = new javax.swing.JButton();
+        searchBtn1 = new javax.swing.JButton();
+        searchBtn2 = new javax.swing.JButton();
+        searchBtn3 = new javax.swing.JButton();
+        searchBtn4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainTable = new javax.swing.JTable();
         filterInput = new javax.swing.JTextField();
@@ -239,31 +242,28 @@ public class transaction extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 500));
 
-        searchBtn.setBackground(new java.awt.Color(238, 105, 131));
-        searchBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
-        searchBtn.setForeground(new java.awt.Color(133, 14, 53));
-        searchBtn.setText("Accounts");
-        searchBtn.setPreferredSize(new java.awt.Dimension(72, 35));
-        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+        dash.setBackground(new java.awt.Color(255, 196, 196));
+        dash.setForeground(new java.awt.Color(133, 14, 53));
+        dash.setText("Dashboard");
+        dash.setPreferredSize(new java.awt.Dimension(72, 35));
+        dash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBtnActionPerformed(evt);
+                dashActionPerformed(evt);
             }
         });
 
-        settingsBtn.setBackground(new java.awt.Color(255, 196, 196));
-        settingsBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
-        settingsBtn.setForeground(new java.awt.Color(133, 14, 53));
-        settingsBtn.setText("Settings");
-        settingsBtn.setPreferredSize(new java.awt.Dimension(75, 35));
+        logout.setBackground(new java.awt.Color(255, 196, 196));
+        logout.setForeground(new java.awt.Color(133, 14, 53));
+        logout.setText("Logout");
+        logout.setPreferredSize(new java.awt.Dimension(75, 35));
 
-        dataBtn.setBackground(new java.awt.Color(255, 196, 196));
-        dataBtn.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
-        dataBtn.setForeground(new java.awt.Color(133, 14, 53));
-        dataBtn.setText("Data");
-        dataBtn.setPreferredSize(new java.awt.Dimension(75, 35));
-        dataBtn.addActionListener(new java.awt.event.ActionListener() {
+        transactionBtn.setBackground(new java.awt.Color(238, 105, 131));
+        transactionBtn.setForeground(new java.awt.Color(133, 14, 53));
+        transactionBtn.setText("Transaction History");
+        transactionBtn.setPreferredSize(new java.awt.Dimension(75, 35));
+        transactionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataBtnActionPerformed(evt);
+                transactionBtnActionPerformed(evt);
             }
         });
 
@@ -282,38 +282,67 @@ public class transaction extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        dash.setBackground(new java.awt.Color(255, 196, 196));
-        dash.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
-        dash.setForeground(new java.awt.Color(133, 14, 53));
-        dash.setText("Dashboard");
-        dash.setPreferredSize(new java.awt.Dimension(72, 35));
-        dash.addActionListener(new java.awt.event.ActionListener() {
+        settingsBtn.setBackground(new java.awt.Color(255, 196, 196));
+        settingsBtn.setForeground(new java.awt.Color(133, 14, 53));
+        settingsBtn.setText("Settings");
+        settingsBtn.setPreferredSize(new java.awt.Dimension(75, 35));
+
+        searchBtn1.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn1.setForeground(new java.awt.Color(133, 14, 53));
+        searchBtn1.setText("Capital");
+        searchBtn1.setPreferredSize(new java.awt.Dimension(72, 35));
+        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dashActionPerformed(evt);
+                searchBtn1ActionPerformed(evt);
             }
         });
 
-        logout.setBackground(new java.awt.Color(255, 196, 196));
-        logout.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 12)); // NOI18N
-        logout.setForeground(new java.awt.Color(133, 14, 53));
-        logout.setText("Logout");
-        logout.setPreferredSize(new java.awt.Dimension(75, 35));
+        searchBtn2.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn2.setForeground(new java.awt.Color(133, 14, 53));
+        searchBtn2.setText("Accounts");
+        searchBtn2.setPreferredSize(new java.awt.Dimension(72, 35));
+        searchBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn2ActionPerformed(evt);
+            }
+        });
+
+        searchBtn3.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn3.setForeground(new java.awt.Color(133, 14, 53));
+        searchBtn3.setText("Active Loans");
+        searchBtn3.setPreferredSize(new java.awt.Dimension(72, 35));
+        searchBtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn3ActionPerformed(evt);
+            }
+        });
+
+        searchBtn4.setBackground(new java.awt.Color(255, 196, 196));
+        searchBtn4.setForeground(new java.awt.Color(133, 14, 53));
+        searchBtn4.setText("Withdrawals");
+        searchBtn4.setPreferredSize(new java.awt.Dimension(72, 35));
+        searchBtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(dash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transactionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dash, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(settingsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dataBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(searchBtn1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchBtn4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(settingsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -321,17 +350,23 @@ public class transaction extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pfpContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
-                .addComponent(dash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(168, 168, 168)
-                .addComponent(settingsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(dash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(transactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(searchBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(searchBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(settingsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(65, 65, 65))
         );
 
         mainTable.setBackground(new java.awt.Color(255, 196, 196));
@@ -395,10 +430,10 @@ public class transaction extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,7 +450,6 @@ public class transaction extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,31 +470,11 @@ public class transaction extends javax.swing.JFrame {
                             .addComponent(filter))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        transaction sUser = new transaction(accId);
-        this.setVisible(false);
-        this.dispose();
-        sUser.setVisible(true);
-    }//GEN-LAST:event_searchBtnActionPerformed
-
-    private void dataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBtnActionPerformed
-       adminData data = new adminData();
-       data.setLocationRelativeTo(null);
-       data.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_dataBtnActionPerformed
-
-    private void dashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashActionPerformed
-        adminDashboard dash =  new adminDashboard(accId);
-        this.setVisible(false);
-        this.dispose();
-        dash.setVisible(true);
-    }//GEN-LAST:event_dashActionPerformed
 
     private void filterInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterInputActionPerformed
         // TODO add your handling code here:
@@ -489,6 +503,49 @@ public class transaction extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_filterActionPerformed
+
+    private void dashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashActionPerformed
+        adminDashboard dash =  new adminDashboard(accId);
+        this.setVisible(false);
+        this.dispose();
+        dash.setVisible(true);
+    }//GEN-LAST:event_dashActionPerformed
+
+    private void transactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionBtnActionPerformed
+        transaction transact =  new transaction(accId);
+        this.setVisible(false);
+        this.dispose();
+        transact.setVisible(true);
+    }//GEN-LAST:event_transactionBtnActionPerformed
+
+    private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
+        adminData capital = new adminData(accId);
+        this.setVisible(false);
+        this.dispose();
+        capital.setVisible(true);
+    }//GEN-LAST:event_searchBtn1ActionPerformed
+
+    private void searchBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn2ActionPerformed
+        searchUser user =  new searchUser(accId);
+        this.setVisible(false);
+        this.dispose();
+        user.setVisible(true);
+
+    }//GEN-LAST:event_searchBtn2ActionPerformed
+
+    private void searchBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn3ActionPerformed
+        activeloans activeloans = new activeloans(accId);
+        this.setVisible(false);
+        this.dispose();
+        activeloans.setVisible(true);
+    }//GEN-LAST:event_searchBtn3ActionPerformed
+
+    private void searchBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn4ActionPerformed
+        widthrawals widthrawals = new widthrawals(accId);
+       this.setVisible(false);
+       this.dispose();
+        widthrawals.setVisible(true);
+    }//GEN-LAST:event_searchBtn4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -530,7 +587,6 @@ public class transaction extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dash;
-    private javax.swing.JButton dataBtn;
     private javax.swing.JButton filter;
     private javax.swing.JTextField filterInput;
     private java.awt.Choice filterType;
@@ -541,8 +597,12 @@ public class transaction extends javax.swing.JFrame {
     private javax.swing.JButton logout;
     private javax.swing.JTable mainTable;
     private javax.swing.JPanel pfpContainer;
-    private javax.swing.JButton searchBtn;
+    private javax.swing.JButton searchBtn1;
+    private javax.swing.JButton searchBtn2;
+    private javax.swing.JButton searchBtn3;
+    private javax.swing.JButton searchBtn4;
     private javax.swing.JButton settingsBtn;
+    private javax.swing.JButton transactionBtn;
     // End of variables declaration//GEN-END:variables
 }                  
 

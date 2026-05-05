@@ -109,7 +109,7 @@ public class OllamaService {
 
         // ✅ SAFE JSON BUILDING (NO MANUAL ESCAPING)
         JsonObject body = new JsonObject();
-        body.addProperty("model", "Phi3");
+        body.addProperty("model", "llama3");
         body.addProperty("prompt", prompt);
         body.addProperty("stream", false);
 

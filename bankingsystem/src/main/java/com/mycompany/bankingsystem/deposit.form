@@ -158,28 +158,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pfpContainer1" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="pfpContainer1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="transac" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="loan" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="savings" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="withdrawTab" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="depositTab" max="32767" attributes="0"/>
-                                  <Component id="transferTab" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="settings" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="logout" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="dashboard" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="settings" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="logout" min="-2" pref="84" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="transac" alignment="0" max="32767" attributes="0"/>
+                          <Component id="loan" alignment="0" max="32767" attributes="0"/>
+                          <Component id="savings" alignment="0" max="32767" attributes="0"/>
+                          <Component id="transferTab" alignment="0" max="32767" attributes="0"/>
+                          <Component id="withdrawTab" alignment="0" max="32767" attributes="0"/>
+                          <Component id="depositTab" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dashboard" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -218,12 +214,15 @@
                   <Color blue="83" green="69" red="ee" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Deposit"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[70, 35]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositTabActionPerformed"/>
@@ -235,7 +234,7 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
@@ -255,7 +254,7 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
@@ -275,7 +274,7 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
@@ -295,7 +294,7 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
@@ -315,7 +314,7 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
@@ -335,7 +334,7 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
@@ -355,7 +354,7 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
@@ -375,12 +374,15 @@
                   <Color blue="c4" green="c4" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Microsoft Sans Serif" size="11" style="0"/>
+                  <Font name="Microsoft Sans Serif" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="35" green="e" red="85" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dashboard"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[70, 35]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dashboardActionPerformed"/>

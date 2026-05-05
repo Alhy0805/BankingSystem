@@ -59,6 +59,7 @@ public class signup extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 500));
+        setUndecorated(true);
 
         jPanel3.setBackground(new java.awt.Color(255, 196, 196));
 
