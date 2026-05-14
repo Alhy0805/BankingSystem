@@ -460,6 +460,11 @@ public class udashboard extends javax.swing.JFrame {
         loanAmount.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 18)); // NOI18N
         loanAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         loanAmount.setText("0.00");
+        loanAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loanAmountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -708,6 +713,10 @@ public class udashboard extends javax.swing.JFrame {
         new AiUi(accId, true, this,posit);
         // TODO add your handling code here:
     }//GEN-LAST:event_dianaActionPerformed
+
+    private void loanAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loanAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loanAmountActionPerformed
 
     /**
      * @param args the command line arguments

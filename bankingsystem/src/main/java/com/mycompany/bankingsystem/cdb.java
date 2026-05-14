@@ -130,6 +130,22 @@ public class cdb {
         
   
     }
+    public void setAddLoan(int id, double InputAmount){
+        try (Connection conn = dbconn.connect()) {
+            String sql = "update bankingAccounts set lBalance = ? WHERE accId = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            double amountdb = getTotalLoan(id);
+            amountdb += InputAmount;
+            
+            stmt.setDouble(1, amountdb);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void setSavingsWithdrawCash(int accID,double newSavings) {
         double oldSavings = 0.0;
         
@@ -307,14 +323,14 @@ public class cdb {
     double amount = 0.0;
 
         try (Connection conn = dbconn.connect()) {
-            String sql = "SELECT totalLoan FROM bankingAccounts WHERE accId = ?";
+            String sql = "SELECT lBalance FROM bankingAccounts WHERE accId = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, accId);
 
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                amount = rs.getDouble("totalLoan");
+                amount = rs.getDouble("lBalance");
             }
 
         } catch (SQLException e) {

@@ -63,11 +63,8 @@ public class searchUser extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-        
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
+
+        try(Connection conn = dbconn.connect()){
             String sql = "select* from bankingAccounts";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
@@ -95,15 +92,11 @@ public class searchUser extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
-
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-
+        
         String sql = "SELECT * FROM bankingAccounts WHERE accId =" + fid;
                  
 
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
+        try (Connection conn = dbconn.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
 
             try (ResultSet rs = pstmt.executeQuery()) {                      // ← also auto-close rs
@@ -135,14 +128,10 @@ public class searchUser extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
 
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-
         String sql = "SELECT * FROM bankingAccounts WHERE fullname = ? ";
                  
 
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
+        try (Connection conn = dbconn.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
             pstmt.setString(1,NAME);
         
@@ -175,14 +164,10 @@ public class searchUser extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
 
-        String user = "root";
-        String pass = "Alhyohan";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-
         String sql = "SELECT * FROM bankingAccounts WHERE status = ?";
                  
 
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
+        try (Connection conn = dbconn.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
             pstmt.setString(1,STATUS);
             try (ResultSet rs = pstmt.executeQuery()) {                      // ← also auto-close rs
