@@ -62,11 +62,8 @@ public class transaction extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
-        String user = "root";
-        String pass = "Nathannn272006";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
         
-        try(Connection conn = DriverManager.getConnection(url,user,pass)){
+        try(Connection conn = dbconn.connect()){
             String sql = "select* from transactions";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
@@ -95,15 +92,11 @@ public class transaction extends javax.swing.JFrame {
         
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
-
-        String user = "root";
-        String pass = "Nathannn272006";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-
+        
         String sql = "SELECT * FROM transactions WHERE accId =" + faid;
                  
 
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
+        try (Connection conn = dbconn.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
 
             try (ResultSet rs = pstmt.executeQuery()) {                      // ← also auto-close rs
@@ -136,14 +129,10 @@ public class transaction extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
 
-        String user = "root";
-        String pass = "Nathannn272006";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-
         String sql = "SELECT * FROM transactions WHERE transacId = ? ";
                  
 
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
+        try (Connection conn = dbconn.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
             pstmt.setInt(1,TID);
         
@@ -176,14 +165,10 @@ public class transaction extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
 
-        String user = "root";
-        String pass = "Nathannn272006";
-        String url = "jdbc:mysql://localhost:3306/bankingDb";
-
         String sql = "SELECT * FROM transactions WHERE transacType = ?";
                  
 
-        try (Connection conn = DriverManager.getConnection(url, user, pass);
+        try (Connection conn = dbconn.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {         // ← also auto-close pstmt
             pstmt.setString(1,TYPE);
             try (ResultSet rs = pstmt.executeQuery()) {                      // ← also auto-close rs
