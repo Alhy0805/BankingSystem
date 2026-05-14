@@ -8,6 +8,7 @@ import static com.mycompany.bankingsystem.udashboard.accId;
 import static com.mycompany.bankingsystem.udashboard.posit;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -441,7 +442,16 @@ public class loan extends javax.swing.JFrame {
            ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
        }else{
            try{
+               cdb db = new cdb();
                double amount = Double.parseDouble(loan);
+               db.setAddLoan(accId,amount);
+               JOptionPane.showMessageDialog(
+            null,
+            "Book borrowed successfully!",
+            "Borrow Success",
+            JOptionPane.INFORMATION_MESSAGE
+        );
+               sLoan.setText("0.00");
            }catch(NumberFormatException e){           
                ErrorManager.showError((java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(this), 0);
            }

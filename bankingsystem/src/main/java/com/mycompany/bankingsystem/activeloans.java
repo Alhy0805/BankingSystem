@@ -55,7 +55,7 @@ public class activeloans extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) mainTable.getModel();
         model.setRowCount(0);
         String user = "root";
-        String pass = "Alhyohan";
+        String pass = "Nathannn272006";
         String url = "jdbc:mysql://localhost:3306/bankingDb";
         
         try(Connection conn = DriverManager.getConnection(url,user,pass)){
@@ -88,7 +88,7 @@ public class activeloans extends javax.swing.JFrame {
         model.setRowCount(0);
 
         String user = "root";
-        String pass = "Alhyohan";
+        String pass = "Nathannn272006";
         String url = "jdbc:mysql://localhost:3306/bankingDb";
 
         String sql = "SELECT * FROM bankingAccounts WHERE accId =" + fid;
@@ -127,7 +127,7 @@ public class activeloans extends javax.swing.JFrame {
         model.setRowCount(0);
 
         String user = "root";
-        String pass = "Alhyohan";
+        String pass = "Nathannn272006";
         String url = "jdbc:mysql://localhost:3306/bankingDb";
 
         String sql = "SELECT * FROM bankingAccounts WHERE fullname = ? ";
@@ -167,7 +167,7 @@ public class activeloans extends javax.swing.JFrame {
         model.setRowCount(0);
 
         String user = "root";
-        String pass = "Alhyohan";
+        String pass = "Nathannn272006";
         String url = "jdbc:mysql://localhost:3306/bankingDb";
 
         String sql = "SELECT * FROM bankingAccounts WHERE status = ?";

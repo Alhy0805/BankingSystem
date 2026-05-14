@@ -10,7 +10,7 @@ public class profile extends JPanel {
     Image image;
     public profile() {
         
-        image = new ImageIcon("C:\\Users\\ASUS\\OneDrive\\Desktop\\ditonga\\BankingSystem\\bankingsystem\\src\\main\\java\\com\\mycompany\\bankingsystem\\images\\bankingLOGO.png").getImage();
+        image = new ImageIcon("C:\\Users\\rashi\\OneDrive\\Desktop\\Banking System\\BankingSystem\\bankingsystem\\src\\main\\java\\com\\mycompany\\bankingsystem\\images\\bankingLOGO.png").getImage();
     }
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
